@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= link_to "Pets", "/pets/"%> 
+    </div>
+    <div class="col-6 left">
+      <%= link_to "Shelters", "/shelters/"%> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h1>Add New Adoptable Pet</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= form_tag "/shelters/#{@shelter_id}/pets" do %>
+      <%= label_tag "Name:" %>
+      <%= text_field_tag :name %><br>
+      <%= label_tag "Image URL:" %>
+      <%= text_field_tag :img_url %><br>
+      <%= label_tag "Approximate Age:" %>
+      <%= text_field_tag :age %><br>
+      <%= label_tag "Sex:" %>
+      <%= text_field_tag :sex, "male or female" %><br>
+      <%= label_tag "Description:" %>
+      <%= text_field_tag :description %><br>
+      <%= submit_tag "Create Pet" %>
+    <% end %>
+    </div>
+  </div>
+</div>
+

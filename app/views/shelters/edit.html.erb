@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= link_to "Pets", "/pets/"%> 
+    </div>
+    <div class="col-6 left">
+      <%= link_to "Shelters", "/shelters/"%> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h1>Edit Shelter</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <form action="/shelters/<%= @shelter.id %>" method="post">
+        <input type="hidden" name="_method" value="PATCH" />
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="shelter[name]"><br><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="shelter[address]"><br><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="shelter[city]"><br><br>
+        <label for="state">State:</label>
+        <input type="text" id="state" name="shelter[state]"><br><br>
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="shelter[zip]"><br><br>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+  </div>
+</div>

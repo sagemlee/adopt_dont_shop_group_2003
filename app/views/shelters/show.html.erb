@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= link_to "Pets", "/pets/"%> 
+    </div>
+    <div class="col-6 left">
+      <%= link_to "Shelters", "/shelters/"%> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h1><%= @shelter.name %></h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3 center">
+      <p><%= @shelter.address %></p>
+    </div>
+    <div class="col-3 center">
+      <p><%= @shelter.city %></p>
+    </div>
+    <div class="col-3 center">
+      <p><%= @shelter.state %></p>
+    </div>
+    <div class="col-3 center">
+      <p><%= @shelter.zip %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 left">
+      <%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %>
+    </div>
+    <div class="col-6 left">
+      <%= button_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h2><%= link_to "See our pets", "/shelters/#{@shelter.id}/pets"%></h2>
+    </div>
+  </div>
+</div>

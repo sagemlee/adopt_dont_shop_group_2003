@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= link_to "Pets", "/pets/"%> 
+    </div>
+    <div class="col-6 left">
+      <%= link_to "Shelters", "/shelters/"%> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h1><%= "#{@shelter.name}" "'s Pets" %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <p>Total Pets: <%= "#{@shelter.pets.count_of_pets}"%></p>
+      <p>Adoptable Pets: <%= "#{@shelter.pets.count_of_adoptable_pets}"%></p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 center">
+      <% @shelter.pets.all_pets_by_adoption_status.each do |pet| %>
+        <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+        <p>Approximate Age: <%= pet.age %></p>
+        <p>Sex: <%= pet.sex %></p>
+        <%= link_to "Edit Pet", "/pets/#{pet.id}/edit"%>
+        <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 center">
+      <h2><%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %></h2>
+    </div>
+  </div>
+</div>
