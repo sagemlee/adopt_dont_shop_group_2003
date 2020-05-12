@@ -6,8 +6,8 @@ describe "user sees all shelter reviews" do
 
       shelter = create(:shelter)
 
-      review1 = create(:review)
-      review2 = create(:review)
+      review1 = create(:review, shelter_id: "#{shelter1.id}")
+      review2 = create(:review, shelter_id: "#{shelter1.id}")
 
       visit "/shelters/#{shelter.id}"
 
