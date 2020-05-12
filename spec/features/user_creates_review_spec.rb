@@ -11,7 +11,7 @@ describe "user creates review" do
       visit "/shelters/#{shelter.id}"
 
       click_link "New Review"
-      expect(current_path).to eq("/shelters/review/new")
+      expect(current_path).to eq("/shelters/#{shelter.id}/reviews/new")
 
       fill_in :Title, with: "Great Shelter"
       fill_in :rating, with: 4
@@ -23,6 +23,6 @@ describe "user creates review" do
 
       expect(page).to have_content("Great Shelter")
       expect(page).to have_content("Blah blah blah blah blah blah")
-    end 
+    end
   end
 end
