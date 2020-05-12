@@ -22,5 +22,19 @@ describe Favorite do
 
       expect(subject.contents).to eq({'1' => 3, '2' => 4})
     end
+    
+    it "adds a pet that hasnt' been added yet" do
+      subject.add_pet('3')
+
+      expect(subject.contents).to eq({'1' => 2, '2' => 3, '3' => 1})
+    end
+  end
+
+  describe "count_of" do
+    it "returns the count of all pets in favorites" do
+      favorite = Favorite.new({})
+
+      expect(favorite.count_of(5)).to eq(0)
+    end
   end
 end
