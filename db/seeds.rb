@@ -20,3 +20,7 @@ shelter2.pets.create(name: "Baxter", age: 2, sex: "male", img_url: "https://adop
 shelter3.pets.create(name: "Lilly", age: 2, sex: "female", img_url: "https://adoptdontshop.s3-us-west-1.amazonaws.com/dog2.jpg", adoption_status: "adoptable", description: "cute")
 shelter3.pets.create(name: "Maggie", age: 2, sex: "female", img_url: "https://adoptdontshop.s3-us-west-1.amazonaws.com/dog2.jpg", adoption_status: "adoptable", description: "cute")
 shelter3.pets.create(name: "Rommel", age: 2, sex: "male", img_url: "https://adoptdontshop.s3-us-west-1.amazonaws.com/dog2.jpg", adoption_status: "pending", description: "cute")
+
+shelter1.reviews.create(title: "Love This Place", rating: 5, content:"This is my favorite shelter.", img_url: "https://cdn2-www.dogtime.com/assets/uploads/2010/12/adopt-a-pet-dog-puppy-3.jpg")
+shelter1.reviews.create(title: "Only Alright", rating: 3, content:"This place is okay.", img_url: "https://www.mercurynews.com/wp-content/uploads/2017/10/sjm-l-shelter-1101-22.jpg?w=620")
+shelter2.reviews.create(title: "Hate This Place", rating: 1, content:"Go somewhere else to adopt, trust me.", img_url: "https://media.npr.org/assets/img/2013/02/06/dog_wide-e19af42dcba6ac82e35773015db5d04ef49c9beb-s1600-c85.jpg")
