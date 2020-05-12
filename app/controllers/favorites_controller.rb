@@ -2,7 +2,8 @@ class FavoritesController < ApplicationController
   include ActionView::Helpers::TextHelper
   
   def index
-    
+    pet_ids = favorite.contents.keys
+    @pets = Pet.find(pet_ids)
   end
 
   def update

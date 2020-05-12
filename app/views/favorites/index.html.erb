@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 center">
+      <h1> Favorited Pets </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-3">
+        <h2><%= link_to "#{pet.name}", "pets/#{pet.id}" %></h2>
+        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+      </div>
+    <% end %>
+  </div>
+</div>
