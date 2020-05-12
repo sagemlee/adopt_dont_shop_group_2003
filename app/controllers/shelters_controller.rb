@@ -35,7 +35,7 @@ class SheltersController < ApplicationController
 
     redirect_to "/shelters/"
   end
-  
+
   private
 
   def shelter_params
