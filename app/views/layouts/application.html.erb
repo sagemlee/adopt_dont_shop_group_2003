@@ -9,6 +9,27 @@
   </head>
 
   <body>
+    <nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-4 left">
+            <%= link_to "Pets", "/pets/"%> 
+          </div>
+          <div class="col-4 left">
+            <%= link_to "Shelters", "/shelters/"%> 
+          </div>
+          <div class="col-4 left">
+            <p>Favorited Pets: <%= favorite.total_count %></p>
+          </div>
+        </div>
+      </div>
+   </nav>
+   
+    <% flash.each do |type, message| %>
+      <section class=<%= type %>>
+        <p><%= message %></p>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>
