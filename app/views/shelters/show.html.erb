@@ -49,7 +49,9 @@
       <p><%= review.title %></p>
       <p><%= review.rating %></p>
       <p><%= review.content %></p>
-      <img src=<%= "#{review.img_url}" %> alt=<%= "#{review.id}" %> height="100" width="100">
+      <% if review.img_url != "" %>
+        <img src=<%= "#{review.img_url}" %> alt=<%= "#{review.id}" %> height="100" width="100">
+        <% end %>
       <% end %>
     </div>
   </div>
