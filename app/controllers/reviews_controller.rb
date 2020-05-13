@@ -15,6 +15,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:review_id])
+    # if review.save
+    #   flash[:notice] = "Review saved"
+    #   redirect_to "/shelters/#{@current_shelter.id}"
+    # else
+    #   flash.now[:alert] = "Please fill out the title, rating and content to submit a review."
+    #   render :new
+    # end
+  end
+
+  def update
+    review = Review.find(params[:review_id])
+    review.update(review_params)
+    redirect_to "/shelters/#{review.shelter_id}"
+  end
+
   private
 
   def review_params
