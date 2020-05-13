@@ -1,17 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-6 center">
-      <h1> Favorited Pets </h1>
+      <h1> Favorite Pets </h1>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <% @pets.each do |pet| %>
-      <div class="col-3">
-        <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
-      </div>
+   <% if @pets.empty? %>
+     <div class="col-6 center">
+      <p>You have no favorite pets</p>
+    </div>
+    <% else %>
+      <% @pets.each do |pet| %>
+        <div class="col-3">
+          <section id="pet-<%= pet.id %>">
+            <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+            <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+            <%= button_to "Remove Pet from Favorites", "/favorites/#{pet.id}", method: :delete %>
+          </section>
+        </div>
+      <% end %>
     <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+   <% if @pets.empty? %>
+   <% else %>
+    <div class="col-6 center">
+      <%= link_to "Remove all favorite pets", "/favorites/", method: :delete%>
+    </div>
+   <% end %>
   </div>
 </div>
