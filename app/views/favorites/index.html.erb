@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 center">
+    <div class="col-12 center">
       <h1> Favorite Pets </h1>
     </div>
   </div>
@@ -8,12 +8,12 @@
 <div class="container">
   <div class="row">
    <% if @pets.empty? %>
-     <div class="col-6 center">
+     <div class="col-12 center">
       <p>You have no favorite pets</p>
-    </div>
+     </div>
     <% else %>
       <% @pets.each do |pet| %>
-        <div class="col-3">
+        <div class="col-4 center">
           <section id="pet-<%= pet.id %>">
             <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
             <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
@@ -28,8 +28,8 @@
   <div class="row">
    <% if @pets.empty? %>
    <% else %>
-    <div class="col-6 center">
-      <%= link_to "Remove all favorite pets", "/favorites/", method: :delete%>
+    <div class="col-12 center">
+      <%= link_to "Remove all favorite pets", "/favorites", method: :delete%>
     </div>
    <% end %>
   </div>
