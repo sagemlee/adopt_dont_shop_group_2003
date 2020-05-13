@@ -25,7 +25,7 @@ describe "user creates review" do
       expect(page).to have_content("Blah blah blah blah blah blah")
     end
 
-    it "displays flash message if missing content" do
+    xit "displays flash message if missing content" do
       shelter = create(:shelter)
 
       review1 = create(:review, shelter_id: "#{shelter.id}")
