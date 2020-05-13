@@ -23,18 +23,18 @@ describe "When a user adds a favorite" do
 
     click_button "Add Pet to Favorites"
     
-    expect(page).to have_content("Favorited Pets: 1")
+    expect(page).to have_content("Favorite Pets: 1")
     
     visit "/pets/#{pet2.id}"
 
     click_button "Add Pet to Favorites"
     
-    expect(page).to have_content("Favorited Pets: 2")
+    expect(page).to have_content("Favorite Pets: 2")
     
     visit "/pets/#{pet3.id}"
 
     click_button "Add Pet to Favorites"
 
-    expect(page).to have_content("Favorited Pets: 3")
+    expect(page).to have_content("Favorite Pets: 3")
   end
 end

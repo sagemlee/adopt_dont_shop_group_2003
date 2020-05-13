@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  include ActionView::Helpers::TextHelper
 
   def index
     @pets = Pet.all
@@ -34,6 +35,7 @@ class PetsController < ApplicationController
 
   def destroy
     Pet.destroy(params[:pet_id])
+    favorite.contents.delete(params[:pet_id])
 
     redirect_to "/pets/"
   end
