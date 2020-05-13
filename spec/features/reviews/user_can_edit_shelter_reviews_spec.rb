@@ -15,11 +15,11 @@ describe "user edits review" do
       end
 
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/#{review1.id}/edit")
-      #
-      # expect(page).to have_content(review1.title)
-      # expect(page).to have_content(review1.rating)
-      # expect(page).to have_content(review1.content)
-      # expect(page).to have_content(review1.img_url)
+
+      expect(page).to have_field(:title, :with => review1.title)
+      expect(page).to have_field(:rating, :with => review1.rating)
+      expect(page).to have_field(:content, :with => review1.content)
+      expect(page).to have_field(:img_url, :with => review1.img_url)
 
       fill_in :title, with: "Great Shelter"
       fill_in :rating, with: 4
