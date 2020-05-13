@@ -13,7 +13,7 @@ describe "user creates review" do
       click_link "New Review"
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/new")
 
-      fill_in :Title, with: "Great Shelter"
+      fill_in :title, with: "Great Shelter"
       fill_in :rating, with: 4
       fill_in :content, with: "Blah blah blah blah blah blah"
       fill_in :img_url, with: "www.img.com/1"
