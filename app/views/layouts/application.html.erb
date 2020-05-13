@@ -19,7 +19,7 @@
             <%= link_to "Shelters", "/shelters/"%> 
           </div>
           <div class="col-4 left">
-            <p>Favorited Pets: <%= favorite.total_count %></p>
+            <%= link_to "Favorite Pets: #{favorite.total_count}", "/favorites/" %>
           </div>
         </div>
       </div>

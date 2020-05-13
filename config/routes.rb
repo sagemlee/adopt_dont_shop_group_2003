@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   post '/shelters/:shelter_id/pets', to: 'pets#create'
 
   patch '/favorites/:pet_id', to: 'favorites#update'
+<<<<<<< HEAD
 
   get 'shelters/:shelter_id/reviews/new', to:'reviews#new'
   post '/shelters/:shelter_id', to: 'reviews#create'
 
+=======
+  get '/favorites', to: 'favorites#index'
+>>>>>>> master
 end
