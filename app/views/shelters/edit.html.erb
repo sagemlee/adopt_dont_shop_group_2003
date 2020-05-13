@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 center">
+    <div class="col-12 center">
       <h1>Edit Shelter</h1>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-6 left">
+    <div class="col-12 left">
       <form action="/shelters/<%= @shelter.id %>" method="post">
         <input type="hidden" name="_method" value="PATCH" />
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
