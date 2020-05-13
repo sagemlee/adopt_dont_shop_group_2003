@@ -24,3 +24,13 @@
     <% end %>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+   <% if @pets.empty? %>
+   <% else %>
+    <div class="col-6 center">
+      <%= link_to "Remove all favorite pets", "/favorites/", method: :delete%>
+    </div>
+   <% end %>
+  </div>
+</div>

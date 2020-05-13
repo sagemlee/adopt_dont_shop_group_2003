@@ -61,3 +61,30 @@ describe "After a user adds a favorite pet and visits the favorites page" do
     end
   end
 end
+
+describe "When a user visits the favorites page and clicks remove all favorited pets" do
+  it "delete all favorited pets" do
+    
+    pet1 = create(:pet)
+    pet2 = create(:pet)
+
+    visit "/pets/#{pet1.id}" 
+    
+    within("#pet-#{pet1.id}") do
+      click_button "Add Pet to Favorites"
+    end
+
+    visit "/pets/#{pet2.id}" 
+    
+    within("#pet-#{pet2.id}") do
+      click_button "Add Pet to Favorites"
+    end
+
+    visit "/favorites/"
+
+    click_link "Remove all favorite pets"
+
+    expect(page).to have_content("You have no favorited pets")
+    expect(page).to have_content("Favorite Pets: 0")
+  end
+end

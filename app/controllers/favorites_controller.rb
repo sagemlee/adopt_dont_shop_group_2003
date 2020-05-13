@@ -22,5 +22,11 @@ class FavoritesController < ApplicationController
 
     redirect_back fallback_location: "/favorites/"
   end
-  
+
+  def destroy_all
+    favorite.contents.clear
+    flash[:notice] = "All favorite pets removed"   
+
+    redirect_to "/favorites/"
+  end
 end
