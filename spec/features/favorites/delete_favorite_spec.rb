@@ -84,7 +84,7 @@ describe "When a user visits the favorites page and clicks remove all favorited 
 
     click_link "Remove all favorite pets"
 
-    expect(page).to have_content("You have no favorited pets")
+    expect(page).to have_content("You have no favorite pets")
     expect(page).to have_content("Favorite Pets: 0")
   end
 end

@@ -10,7 +10,7 @@
    <% if @pets.empty? %>
      <div class="col-12 center">
       <p>You have no favorite pets</p>
-    </div>
+     </div>
     <% else %>
       <% @pets.each do |pet| %>
         <div class="col-3 center">
@@ -29,7 +29,7 @@
    <% if @pets.empty? %>
    <% else %>
     <div class="col-12 center">
-      <%= link_to "Remove all favorite pets", "/favorites/", method: :delete%>
+      <%= link_to "Remove all favorite pets", "/favorites", method: :delete%>
     </div>
    <% end %>
   </div>

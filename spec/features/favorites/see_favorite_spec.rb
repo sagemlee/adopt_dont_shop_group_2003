@@ -31,7 +31,7 @@ describe "user visits favorites page" do
       
       visit "/favorites/"
 
-      expect(page).to have_content("You have no favorited pets")
+      expect(page).to have_content("You have no favorite pets")
     end
   end
 end
