@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <% @shelter.pets.all_pets_by_adoption_status.each do |pet| %>
-      <div class="col-3 center">
+      <div class="col-4 center">
         <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
         <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
         <p>Approximate Age: <%= pet.age %></p>
