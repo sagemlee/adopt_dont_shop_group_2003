@@ -24,3 +24,14 @@ describe "user sees all favorites" do
     end
   end
 end
+
+describe "user visits favorites page" do
+  describe "user has no favorite pets" do
+    it "displays text saying user has no favorite pets" do
+      
+      visit "/favorites/"
+
+      expect(page).to have_content("You have no favorite pets")
+    end
+  end
+end

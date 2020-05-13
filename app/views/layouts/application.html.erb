@@ -10,20 +10,13 @@
 
   <body>
     <nav>
-      <div class="container">
-        <div class="row">
-          <div class="col-4 left">
-            <%= link_to "Pets", "/pets/"%> 
-          </div>
-          <div class="col-4 left">
-            <%= link_to "Shelters", "/shelters/"%> 
-          </div>
-          <div class="col-4 left">
-            <%= link_to "Favorite Pets: #{favorite.total_count}", "/favorites/" %>
-          </div>
-        </div>
+      <div class="topnav">
+        <a class="active" href="/shelters/">Home</a>
+        <a href="/pets/">Pets</a>
+        <a href="/shelters/">Shelters</a>
+        <a href="/favorites/"><%= "Favorite Pets: #{favorite.total_count}" %></a>
       </div>
-   </nav>
+    </nav> 
    
     <% flash.each do |type, message| %>
       <section class=<%= type %>>

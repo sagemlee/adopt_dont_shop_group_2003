@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 center">
+    <div class="col-12 center">
       <h1>Pets</h1>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-6 center">
-      <% @pets.all_pets_by_adoption_status.each do |pet| %>
+    <% @pets.all_pets_by_adoption_status.each do |pet| %>
+      <div class="col-4 center">
         <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
         <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
         <p>Approximate Age: <%= pet.age %></p>
@@ -16,8 +16,8 @@
         <p>Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
         <%= link_to "Edit Pet", "/pets/#{pet.id}/edit"%>
         <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
