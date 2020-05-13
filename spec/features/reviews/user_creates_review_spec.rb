@@ -25,7 +25,7 @@ describe "user creates review" do
       expect(page).to have_content("Blah blah blah blah blah blah")
     end
 
-    xit "displays flash message if missing content" do
+    it "displays flash message if missing content" do
       shelter = create(:shelter)
 
       review1 = create(:review, shelter_id: "#{shelter.id}")
@@ -42,7 +42,7 @@ describe "user creates review" do
       click_button "Submit"
 
       expect(page).to have_content("Please fill out the title, rating and content to submit a review")
-      expect(current_path).to eq("/shelters/#{shelter.id}/reviews/new")
+      expect(current_path).to eq("/shelters/#{shelter.id}")
 
       fill_in :title, with: "Pets Pets Pets"
       fill_in :rating, with: 1
