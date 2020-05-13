@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "When a user adds a favorite" do
-  xit "displays a message" do
+  it "displays a message" do
 
     pet = create(:pet)
 
@@ -11,9 +11,9 @@ describe "When a user adds a favorite" do
       click_button "Add Pet to Favorites"
     end
 
-    expect(page).to have_content("#{pet.name} has been added to your favorites.")
+    expect(page).to have_content("#{pet.name} has been added to your favorites")
   end
-  xit "displays the total number of pets in favorites" do
+  it "displays the total number of pets in favorites" do
 
     pet1 = create(:pet)
     pet2 = create(:pet)
