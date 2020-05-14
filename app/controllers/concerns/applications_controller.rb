@@ -17,7 +17,6 @@ class ApplicationsController < ApplicationController
       end 
       flash[:notice] = "Your application has been submitted"
       redirect_to "/favorites"
-      # session[:favorite].delete(pet_id)
     else 
       flash[:notice] = "You must fill out all contents of the application form"
       redirect_to '/applications/new'
