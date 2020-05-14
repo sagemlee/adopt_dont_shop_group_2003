@@ -47,15 +47,19 @@
       <h3> Reviews </h3>
     </div>
   </div>
+  
   <div class="row">
     <% @shelter.reviews.each do |review| %>
       <div class="col-4 center">
+        <section class = "review-<%=review.id %>">
         <p><%= review.title %></p>
         <p><%= review.rating %></p>
         <p><%= review.content %></p>
         <% if review.img_url != "" %>
           <img src=<%= "#{review.img_url}" %> alt=<%= "#{review.id}" %> height="100" width="100">
         <% end %>
+        <h4><%= link_to "Edit this Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit"%></h4>
+        <h4><%= link_to "Delete Review", "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete%></h4>
       </div>
     <% end %>
   </div>

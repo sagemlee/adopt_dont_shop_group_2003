@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 center">
+      <h1>Edit <%# REVIEW:  %></h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 left">
+      <%= form_tag "/shelters/#{@review.shelter_id}/reviews/#{@review.id}", method: :patch do %>
+      <%= label_tag "Title:" %>
+      <%= text_field_tag :title, @review.title %><br>
+      <%= label_tag "Rating:" %>
+      <%= text_field_tag :rating, @review.rating %><br>
+      <%= label_tag "Content:" %>
+      <%= text_field_tag :content, @review.content %><br>
+      <%= label_tag "Image URL:" %>
+      <%= text_field_tag :img_url, @review.img_url %><br>
+      <%= submit_tag "Submit Updates" %>
+    <% end %>
+    </div>
+  </div>
+</div>
