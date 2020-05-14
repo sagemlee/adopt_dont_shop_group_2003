@@ -8,7 +8,6 @@ class ApplicationsController < ApplicationController
 
   def create
     new_application = Application.create(application_params)
-    
     pet_ids = params[:pet_ids]
 
     if new_application.save
@@ -28,6 +27,6 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-    params[:application].permit(:name, :address, :city, :state, :zip, :phone_number, :description, :approval_status)
+    params.permit(:name, :address, :city, :state, :zipcode, :phone_number, :description, :approval_status)
   end
 end

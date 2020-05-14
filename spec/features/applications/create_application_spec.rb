@@ -28,7 +28,7 @@ describe "user creates application" do
       fill_in :address, with: "Bobsfdwe"
       fill_in :city, with: "Bobagre"
       fill_in :state, with: "Bobsfg"
-      fill_in :zip, with: "12345"
+      fill_in :zipcode, with: "12345"
       fill_in :description, with: "Bob likes cheese"
 
       click_button "Submit Application"
@@ -39,7 +39,7 @@ describe "user creates application" do
       expect(page).to_not have_css("#pet-#{pet3.id}")
     end
 
-    xit "creates application" do
+    it "creates application" do
       pet2 = create(:pet)
       pet3 = create(:pet)
       application = Application.new(name: "app 1", address: "add2", city: "city1", state: "state1", zipcode: "80000", phone_number: "111-111-1111", description: "descr1")
@@ -66,7 +66,7 @@ describe "user creates application" do
       fill_in :address, with: "Bobsfdwe"
       fill_in :city, with: "Bobagre"
       fill_in :state, with: "Bobsfg"
-      fill_in :zip, with: "12345"
+      fill_in :zipcode, with: "12345"
       fill_in :description, with: "Bob likes cheese"
 
       click_button "Submit Application"
@@ -77,9 +77,9 @@ describe "user creates application" do
       expect(new_application.address).to eq("Bobsfdwe")
       expect(new_application.city).to eq("Bobagre")
       expect(new_application.state).to eq("Bobsfg")
-      expect(new_application.state).to eq("Bob")
-      expect(new_application.zip).to eq("Bob")
-      expect(new_application.description).to eq("Bob")
+      expect(new_application.zipcode).to eq("12345")
+      expect(new_application.description).to eq("Bob likes cheese")
+      expect(new_application.approval_status).to eq("false")
     end
   end
 end
