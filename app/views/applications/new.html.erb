@@ -22,8 +22,6 @@
   <div class="container">
     <div class="row">
       <div class="col-12 left">
-        <%= label_tag "Select pets for adoption" %><br>
-        <%= select_tag "pet_ids[]", options_for_select(@favorite_pets.map {|pet| [pet.name, pet.id]}), multiple: :true, required: :true %><br><br>
         <%= label_tag "Name:" %>
         <%= text_field_tag :name %><br>
         <%= label_tag "Address:" %>
@@ -38,7 +36,9 @@
         <%= text_field_tag :phone_number%><br>
         <%= label_tag "Description:" %>
         <%= text_field_tag :description %><br>
-        <%= hidden_field_tag :approved, false %>
+        <%= hidden_field_tag :approved, false %><br>
+        <%= label_tag "Select pets for adoption" %><br>
+        <%= select_tag "pet_ids[]", options_for_select(@favorite_pets.map {|pet| [pet.name, pet.id]}), multiple: :true, required: :true %><br><br>
         <%= submit_tag "Submit Application" %>
         <% end %>
       </div>
