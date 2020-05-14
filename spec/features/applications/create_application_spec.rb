@@ -21,15 +21,9 @@ describe "user creates application" do
       visit '/favorites'
       click_link "Adopt My Favorite Pets"
       expect(current_path).to eq('/applications/new')
-
-      within("#pet-#{pet2.id}") do
-        click_button "Select"
-      end
-
-      within("#pet-#{pet3.id}") do
-        click_button "Select"
-      end
-
+      
+      select("#{pet2.name}")
+      select("#{pet3.name}")
       fill_in :name, with: "Bob"
       fill_in :address, with: "Bobsfdwe"
       fill_in :city, with: "Bobagre"
@@ -37,7 +31,7 @@ describe "user creates application" do
       fill_in :zip, with: "12345"
       fill_in :description, with: "Bob likes cheese"
 
-      click_button "Submit My Application"
+      click_button "Submit Application"
 
       expect(page).to have_content("Your application has been submitted")
       expect(current_path).to eq('/favorites')
