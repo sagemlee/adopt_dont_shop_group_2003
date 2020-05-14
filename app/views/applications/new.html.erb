@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 center">
+      <h1>Pet Adoption Application</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 left">
+      <%= form_tag "/applications/#{@application.id}" do %>
+      <%= label_tag "Name:" %>
+      <%= text_field_tag :name %><br>
+      <%= label_tag "Address:" %>
+      <%= text_field_tag :address %><br>
+      <%= label_tag "City:" %>
+      <%= text_field_tag :city %><br>
+      <%= label_tag "State:" %>
+      <%= text_field_tag :state %><br>
+      <%= label_tag "Zipcode:" %>
+      <%= text_field_tag :zipcode %><br>
+      <%= label_tag "Phone Number" %>
+      <%= text_field_tag :phone_number%><br>
+      <%= label_tag "Description:" %>
+      <%= text_field_tag :description %><br>
+      <%= submit_tag "Submit Application" %>
+    <% end %>
+    </div>
+  </div>
+</div>

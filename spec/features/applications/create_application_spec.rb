@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user creates application" do
   describe "visits pet favorites and clicks create application" do
-    xit "shows pet application page" do
+    it "shows pet application page" do
 
       pet1 = create(:pet)
       pet2 = create(:pet)
