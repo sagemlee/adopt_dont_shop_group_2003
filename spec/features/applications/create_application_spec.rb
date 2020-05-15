@@ -20,7 +20,7 @@ describe "user creates application" do
       visit '/favorites'
       click_link "Adopt My Favorite Pets"
       expect(current_path).to eq('/applications/new')
-      
+
       select("#{@pet2.name}")
       select("#{@pet3.name}")
       fill_in :name, with: "Bob"
@@ -32,7 +32,7 @@ describe "user creates application" do
       fill_in :description, with: "Bob likes cheese"
 
       click_button "Submit Application"
-    end 
+    end
     it "shows pet application page" do
 
       expect(page).to have_content("Your application has been submitted")
@@ -73,7 +73,7 @@ describe "user creates application" do
       visit '/favorites'
       click_link "Adopt My Favorite Pets"
       expect(current_path).to eq('/applications/new')
-      
+
       select("#{pet2.name}")
       select("#{pet3.name}")
       fill_in :name, with: "Bob"
@@ -82,8 +82,12 @@ describe "user creates application" do
       fill_in :state, with: "Bobsfg"
       fill_in :zipcode, with: "12345"
       fill_in :description, with: "Bob likes cheese"
-
+      #does not fill in phone number
       click_button "Submit Application"
-    end 
-  end 
+
+      expect(page).to have_content("You must fill out all contents of the application form")
+      expect(current_path).to eq('/applications/new')
+
+    end
+  end
 end
