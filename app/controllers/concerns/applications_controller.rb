@@ -13,8 +13,8 @@ class ApplicationsController < ApplicationController
     if new_application.save
       pet_ids.each do |pet_id|
         PetApplication.create!(application_id: new_application.id, pet_id: pet_id)
-        favorite.contents.reject! { |pet_id,count| pet_ids.include?(pet_id) }
       end 
+      favorite.contents.reject! { |pet_id,count| pet_ids.include?(pet_id) }
       flash[:notice] = "Your application has been submitted"
       redirect_to "/favorites"
     else 
