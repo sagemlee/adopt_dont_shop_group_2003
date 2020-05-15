@@ -6,6 +6,8 @@ describe Pet, type: :model do
   end
   describe "relationships" do
     it { should belong_to :shelter }
+    it { should have_many :pet_applications}
+    it { should have_many(:applications).through(:pet_applications)}
   end
   describe "methods" do
     it ".adoptable_pets" do
@@ -25,7 +27,7 @@ describe Pet, type: :model do
       pets = Pet.all
 
       expect(pets.count_of_pets).to eq(3)
-    end 
+    end
     it ".count_of_adoptable_pets" do
       pet1 = create(:pet, adoption_status: "pending")
       pet2 = create(:pet)
@@ -34,7 +36,7 @@ describe Pet, type: :model do
       pets = Pet.all
 
       expect(pets.count_of_adoptable_pets).to eq(2)
-    end 
+    end
     it ".all_pets_by_adoption_status" do
       pet1 = create(:pet, adoption_status: "pending")
       pet2 = create(:pet)
@@ -43,6 +45,6 @@ describe Pet, type: :model do
       pets = Pet.all
 
       expect(pets.all_pets_by_adoption_status).to eq([pet2, pet3, pet1])
-    end 
-  end 
+    end
+  end
 end

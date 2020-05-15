@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 center">
+      <h1>Pet Adoption Application</h1>
+    </div>
+  </div>
+</div>
+
+<%= form_tag "/applications" do %>
+  <div class="container">
+    <div class="row">
+      <% @favorite_pets.each do |pet| %>
+        <div class="col-3 center">
+          <section id="pet-<%= pet.name %>">
+            <h2> <%= pet.name %></h2>
+            <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100"><br>
+          </section>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 left">
+        <%= label_tag "Name:" %>
+        <%= text_field_tag :name %><br>
+        <%= label_tag "Address:" %>
+        <%= text_field_tag :address %><br>
+        <%= label_tag "City:" %>
+        <%= text_field_tag :city %><br>
+        <%= label_tag "State:" %>
+        <%= text_field_tag :state %><br>
+        <%= label_tag "Zip:" %>
+        <%= text_field_tag :zipcode %><br>
+        <%= label_tag "Phone Number" %>
+        <%= text_field_tag :phone_number%><br>
+        <%= label_tag "Description:" %>
+        <%= text_field_tag :description %><br>
+        <%= hidden_field_tag :approval_status, false %><br>
+        <%= label_tag "Select pets for adoption" %><br>
+        <%= select_tag "pet_ids[]", options_for_select(@favorite_pets.map {|pet| [pet.name, pet.id]}), multiple: :true, required: :true %><br><br>
+        <%= submit_tag "Submit Application" %>
+        <% end %>
+      </div>
+    </div>
+</div>

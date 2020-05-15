@@ -1,5 +1,8 @@
 class Pet < ApplicationRecord
   belongs_to :shelter
+  has_many :pet_applications
+  has_many :applications, through: :pet_applications
+
   validates_presence_of :name
   validates :sex, inclusion: { in: %w(male female),
     message: "%{value} is not a valid sex" }
@@ -19,5 +22,5 @@ class Pet < ApplicationRecord
   def self.all_pets_by_adoption_status
     Pet.order(:adoption_status)
   end
-  
+
 end
