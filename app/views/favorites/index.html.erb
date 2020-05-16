@@ -7,12 +7,12 @@
 </div>
 <div class="container">
   <div class="row">
-   <% if @pets.empty? %>
+   <% if @favorite_pets.empty? %>
      <div class="col-12 center">
       <p>You have no favorite pets</p>
      </div>
     <% else %>
-      <% @pets.each do |pet| %>
+      <% @favorite_pets.each do |pet| %>
         <div class="col-4 center">
           <section id="pet-<%= pet.id %>">
             <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
@@ -26,7 +26,7 @@
 </div>
 <div class="container">
   <div class="row">
-   <% if @pets.empty? %>
+   <% if @favorite_pets.empty? %>
    <% else %>
     <div class="col-12 center">
       <%= link_to "Remove all favorite pets", "/favorites", method: :delete%>
@@ -46,19 +46,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12 center">
-    <section id="pets_with_applications">
-      <h3> Pets with Pending Applications </h3>
-      <% @pets.each do |pet|%>
-      <% binding.pry%>
-      <% if pet.applications != [] %>
-       <div class="col-4 center">
-         <section id="pets_with_applications-<%= pet.id %>">
-           <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-           <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
-         </section>
-       </div>
-      <% end %>
-      <% end %>
-    </section>
+      <section id="pets_with_applications">
+        <h3> Pets with Pending Applications </h3>
+        <% @pets.each do |pet|%>
+        <% if !pet.applications.empty? %>
+        <div class="col-4 center">
+          <section id="pets_with_applications-<%= pet.id %>">
+             <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+             <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+           </section>
+          </div>
+        <% end %>
+        <% end %>
+      </section>
+    </div>
   </div>
 </div>

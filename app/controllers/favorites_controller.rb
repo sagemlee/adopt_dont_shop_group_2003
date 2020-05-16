@@ -3,7 +3,8 @@ class FavoritesController < ApplicationController
 
   def index
     pet_ids = favorite.contents.keys
-    @pets = Pet.find(pet_ids)
+    @favorite_pets = Pet.find(pet_ids)
+    @pets = Pet.all
   end
 
   def update
