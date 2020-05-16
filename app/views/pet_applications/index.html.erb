@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 center">
+      <h1> Applications for <%= @pet.name %> </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @pet.applications.each do |applicant| %>
+      <div class="col-4 center">
+        <section id="applicant-<%= applicant.id %>">
+          <h2><%= link_to "#{applicant.name}", "/applicants/#{applicant.id}" %></h2>
+        </section>
+      </div>
+    <% end %>
+  </div>
+</div>

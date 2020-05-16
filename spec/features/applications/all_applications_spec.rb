@@ -14,9 +14,11 @@ describe "user visits pets/:pet_id" do
 
       visit "/pets/#{pet1.id}"
 
-      click_link "See applications"
+      within("#pet-#{pet1.id}") do
+        click_link "See applications"
+      end
 
-      expect(current_path).to eq('/pets/applications')
+      expect(current_path).to eq("/pets/#{pet1.id}/applications")
 
       have_link("#{application1.name}", :href => "/applications/#{application1.id}")
       have_link("#{application2.name}", :href => "/applications/#{application2.id}")
