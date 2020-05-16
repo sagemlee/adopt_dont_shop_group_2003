@@ -9,8 +9,8 @@
   <div class="row">
     <% @pet.applications.each do |applicant| %>
       <div class="col-4 center">
-        <section id="applicant-<%= applicant.id %>">
-          <h2><%= link_to "#{applicant.name}", "/applicants/#{applicant.id}" %></h2>
+        <section id="application-<%= applicant.id %>">
+          <h2><%= link_to "#{applicant.name}", "/applications/#{applicant.id}" %></h2>
         </section>
       </div>
     <% end %>
