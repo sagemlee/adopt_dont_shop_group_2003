@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user creates application for more than one pet" do
   describe "visits application show page" do
-    xit "can approve any number of pets" do
+    it "can approve any number of pets" do
       pet1 = create(:pet)
       pet2 = create(:pet)
 
@@ -22,9 +22,9 @@ describe "user creates application for more than one pet" do
       within("#pet-#{pet2.id}") do
         click_link "Approve Application for Pet"
       end
-      binding.pry
-      expect(pet1.id.applications.approved_application).to eq(application1)
-      expect(pet2.id.applications.approved_application).to eq(application1)
+  
+      expect(pet1.applications.approved_application).to eq(application1)
+      expect(pet2.applications.approved_application).to eq(application1)
 
     end
   end
