@@ -20,7 +20,8 @@
             <%= button_to "Remove Pet from Favorites", "/favorites/#{@pet.id}", method: :delete %>
           <% else %>
             <%= button_to "Add Pet to Favorites", "/favorites/#{@pet.id}", method: :patch %> 
-        <% end %>
+        <% end %><br>
+        <%= link_to "See applications", "/pets/#{@pet.id}/applications" %>
       </section>
     </div>
   </div>
