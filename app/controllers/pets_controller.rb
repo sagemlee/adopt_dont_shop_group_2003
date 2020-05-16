@@ -43,6 +43,6 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.permit(:name, :img_url, :age, :sex, :description)
+    params.permit(:name, :img_url, :age, :sex, :description, :adoption_status)
   end
 end
