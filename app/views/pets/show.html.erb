@@ -14,7 +14,9 @@
         <p>Sex: <%= @pet.sex %></p>
         <p>Description: <%= @pet.description %></p>
         <p>Adoption Status: <%= @pet.adoption_status %></p>
+        <% if !@pet.applications.approved_application.nil? %>
         <p>On hold for <%= @pet.applications.approved_application.name %></p>
+        <% end %>
         <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
         <%= button_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
         <% if favorite.contents.has_key?(@pet.id.to_s) %>
