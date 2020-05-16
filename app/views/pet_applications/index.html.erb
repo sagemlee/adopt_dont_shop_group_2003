@@ -11,13 +11,13 @@
       <% if @pet.applications.empty? %>
         <p>This pet has no applications</p>
     </div>
-    <% else %>
-      <% @pet.applications.each do |applicant| %>
-        <div class="col-4 center">
-          <section id="application-<%= applicant.id %>">
-            <h2><%= link_to "#{applicant.name}", "/applications/#{applicant.id}" %></h2>
-          </section>
-        </div>
+      <% else %>
+        <% @pet.applications.each do |applicant| %>
+          <div class="col-4 center">
+            <section id="application-<%= applicant.id %>">
+              <h2><%= link_to "#{applicant.name}", "/applications/#{applicant.id}" %></h2>
+            </section>
+          </div>
       <% end %>
     <% end %>
   </div>
