@@ -25,7 +25,7 @@ describe "user sees one application" do
       expect(current_path).to eq("/pets/#{pet1.id}")
 
       expect(page).to have_content("pending")
-      # expect(page).to have_content("On hold for #{application1.name}")
+      expect(page).to have_content("On hold for #{application1.name}")
     end
   end
 end
