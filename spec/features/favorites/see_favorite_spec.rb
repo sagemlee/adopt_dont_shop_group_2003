@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "user sees all favorites" do
   describe "they visit /favorites" do
     it "displays all favorite pets" do
-      
+
       pet1 = create(:pet)
       pet2 = create(:pet)
 
@@ -28,10 +28,50 @@ end
 describe "user visits favorites page" do
   describe "user has no favorite pets" do
     it "displays text saying user has no favorite pets" do
-      
+
       visit "/favorites/"
 
       expect(page).to have_content("You have no favorite pets")
+    end
+  end
+end
+
+describe "user visits favorites index page" do
+  describe "one or more applications have been created" do
+    it "displays section of pets with applications" do
+
+      pet1 = create(:pet)
+      pet2 = create(:pet)
+      pet3 = create(:pet)
+
+      application1 = create(:application)
+      application2 = create(:application)
+
+      PetApplication.create!(application: application1, pet: pet2)
+      PetApplication.create!(application: application2, pet: pet3)
+
+      visit '/favorites'
+
+      within("#pets_with_applications-#{pet2.id}") do
+        expect(page).to have_link("#{pet2.name}")
+        click_link("#{pet2.name}")
+        expect(current_path).to eq("/pets/#{pet2.id}")
+      end
+
+      visit '/favorites'
+
+      within("#pets_with_applications-#{pet3.id}") do
+        expect(page).to have_link("#{pet3.name}")
+        click_link("#{pet3.name}")
+        expect(current_path).to eq("/pets/#{pet3.id}")
+      end
+
+      visit '/favorites'
+
+      within("#pets_with_applications") do
+        expect(page).to_not have_link("#{pet1.name}")
+      end
+
     end
   end
 end
