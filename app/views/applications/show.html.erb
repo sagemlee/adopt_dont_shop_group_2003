@@ -23,11 +23,14 @@
     </div>
   </div>
   <div class="row">
-    <% @application.pets.each do |pet| %>    
-      <div class="col-3 center">
+    <% @application.pets.each do |pet| %>
+    <div class="col-3 center">
+      <section id="pet-<%= pet.id %>">
         <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3><br>
-        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
-      </div>
+        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100"><br>
+        <%= link_to "Approve Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch%>
+      </section>
+    </div>
     <% end %>
   </div>
 </div>
