@@ -23,9 +23,12 @@ describe "user sees one application" do
       end
 
       expect(current_path).to eq("/pets/#{pet1.id}")
-
       expect(page).to have_content("pending")
       expect(page).to have_content("On hold for #{application1.name}")
+
+      visit "/pets/#{pet2.id}"
+      expect(page).to_not have_content("On hold for #{application1.name}")
+
     end
 
     it "displays flash message when approving an application for a pet whom already has an approval" do
