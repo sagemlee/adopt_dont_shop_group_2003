@@ -10,7 +10,6 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:application_id])
   end
 
-
   def create
     new_application = Application.create(application_params)
     pet_ids = params[:pet_ids]

@@ -81,7 +81,6 @@ describe "user creates application" do
       fill_in :state, with: "Bobsfg"
       fill_in :zipcode, with: "12345"
       fill_in :description, with: "Bob likes cheese"
-      #does not fill in phone number
       click_button "Submit Application"
 
       expect(page).to have_content("You must fill out all contents of the application form")
