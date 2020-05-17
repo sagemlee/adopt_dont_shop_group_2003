@@ -37,4 +37,5 @@ Rails.application.routes.draw do
 
   get 'pets/:pet_id/applications', to: 'pet_applications#index'
   patch 'pets/:pet_id/applications/:application_id', to: 'pet_applications#update_approval'
+  delete 'pets/:pet_id/applications/:application_id', to: 'pet_applications#destroy_approval'
 end

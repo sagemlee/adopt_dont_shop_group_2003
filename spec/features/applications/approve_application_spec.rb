@@ -46,11 +46,11 @@ describe "user sees one application" do
       visit "/applications/#{application2.id}"
 
       within("#pet-#{pet1.id}") do
-        click_link "Approve Application for Pet"
+        expect(page).to_not have_link("Approve Application for Pet")
       end
 
-      expect(current_path).to eq("/applications/#{application2.id}")
-      expect(page).to have_content("No more applications can be approved for this pet at this time.")
+      # expect(current_path).to eq("/applications/#{application2.id}")
+      # expect(page).to have_content("No more applications can be approved for this pet at this time.")
     end
 
     it "shows link to unapprove previously approved pets" do
@@ -69,7 +69,6 @@ describe "user sees one application" do
       visit "/applications/#{application1.id}"
 
       within("#pet-#{pet1.id}") do
-        click_link "Approve Application for Pet"
         expect(page).to_not have_link("Approve Application for Pet")
         click_link("Unapprove Application for Pet")
       end
@@ -84,6 +83,6 @@ describe "user sees one application" do
       visit "/pets/#{pet1.id}"
       expect(page).to have_content("adoptable")
       expect(page).to_not have_content("On hold for #{application1.name}")
-    end 
+    end
   end
 end
