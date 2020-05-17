@@ -22,7 +22,7 @@ describe "user creates application for more than one pet" do
       within("#pet-#{pet2.id}") do
         click_link "Approve Application for Pet"
       end
-  
+
       expect(pet1.applications.approved_application).to eq(application1)
       expect(pet2.applications.approved_application).to eq(application1)
 
