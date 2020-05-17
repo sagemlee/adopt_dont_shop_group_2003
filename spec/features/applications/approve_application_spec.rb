@@ -48,9 +48,6 @@ describe "user sees one application" do
       within("#pet-#{pet1.id}") do
         expect(page).to_not have_link("Approve Application for Pet")
       end
-
-      # expect(current_path).to eq("/applications/#{application2.id}")
-      # expect(page).to have_content("No more applications can be approved for this pet at this time.")
     end
 
     it "shows link to unapprove previously approved pets" do
