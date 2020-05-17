@@ -27,8 +27,11 @@
     <div class="col-3 center">
       <section id="pet-<%= pet.id %>">
         <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3><br>
-        <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100"><br>
-        <%= link_to "Approve Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch%>
+        <% if pet.adoption_status == "adoptable" %>
+          <%= link_to "Approve Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch%>
+        <% else %>
+          <%= link_to "Unapprove Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :delete%>
+        <% end %>
       </section>
     </div>
     <% end %>

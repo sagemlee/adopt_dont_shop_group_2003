@@ -23,9 +23,10 @@ describe "user creates application for more than one pet" do
         click_link "Approve Application for Pet"
       end
 
-      expect(pet1.applications.approved_application).to eq(application1)
-      expect(pet2.applications.approved_application).to eq(application1)
-
+      visit "/pets/#{pet1.id}"
+      expect(page).to have_content("pending")
+      visit "/pets/#{pet2.id}"
+      expect(page).to have_content("pending")
     end
   end
 end

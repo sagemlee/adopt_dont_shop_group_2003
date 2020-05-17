@@ -7,16 +7,22 @@ class PetApplicationsController < ApplicationController
   def update_approval
     pet = Pet.find(params[:pet_id])
     application = Application.find(params[:application_id])
-    if !pet.applications.approved_application.nil?
-      flash[:notice] = "No more applications can be approved for this pet at this time."
-      redirect_back fallback_location: "/pets/"
-    else
-      pet.adoption_status = "pending"
-      application.approval_status = "true"
-      pet.save
-      application.save
-      redirect_to "/pets/#{pet.id}"
-    end
+    pet.adoption_status = "pending"
+    pet.save
+    pet_application = PetApplication.find_by(pet_id: pet.id, application_id: application.id)
+    pet_application.approved = "true"
+    pet_application.save
+    redirect_to "/pets/#{pet.id}"
+  end
 
+  def destroy_approval
+    pet = Pet.find(params[:pet_id])
+    application = Application.find(params[:application_id])
+    pet_application = PetApplication.find_by(pet_id: pet.id, application_id: application.id)
+    pet.adoption_status = "adoptable"
+    pet.save
+    pet_application.approved = "false"
+    pet_application.save
+    redirect_to "/applications/#{application.id}"
   end
 end

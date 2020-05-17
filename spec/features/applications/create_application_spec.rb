@@ -51,7 +51,6 @@ describe "user creates application" do
       expect(new_application.state).to eq("Bobsfg")
       expect(new_application.zipcode).to eq("12345")
       expect(new_application.description).to eq("Bob likes cheese")
-      expect(new_application.approval_status).to eq("false")
     end
   end
   describe "user does not fill out all information" do
@@ -82,7 +81,6 @@ describe "user creates application" do
       fill_in :state, with: "Bobsfg"
       fill_in :zipcode, with: "12345"
       fill_in :description, with: "Bob likes cheese"
-      #does not fill in phone number
       click_button "Submit Application"
 
       expect(page).to have_content("You must fill out all contents of the application form")

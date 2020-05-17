@@ -6,14 +6,13 @@ describe "user sees one application" do
 
       pet1 = create(:pet)
       pet2 = create(:pet)
-        
+
       application1 = create(:application)
 
-      PetApplication.create!(application: application1, pet: pet1) 
-      PetApplication.create!(application: application1, pet: pet2) 
+      PetApplication.create!(application: application1, pet: pet1)
+      PetApplication.create!(application: application1, pet: pet2)
 
       visit "/applications/#{application1.id}"
-
 
       expect(page).to have_content(application1.name)
       expect(page).to have_content(application1.address)
