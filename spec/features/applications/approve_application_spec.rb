@@ -31,7 +31,7 @@ describe "user sees one application" do
 
     end
 
-    it "displays flash message when approving an application for a pet whom already has an approval" do
+    it "does not display approval button for an application for a pet whom already has an approval" do
       pet1 = create(:pet)
 
       application1 = create(:application)
