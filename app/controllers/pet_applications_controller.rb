@@ -11,7 +11,9 @@ class PetApplicationsController < ApplicationController
     pet.save
     # application.approval_status = "true"
     # application.save
-    pet_application.approval_status = "true"
+
+    pet_application = PetApplication.find_by(pet_id: pet.id, application_id: application.id)
+    pet_application.approved = "true"
     pet_application.save
     redirect_to "/pets/#{pet.id}"
   end
@@ -23,7 +25,7 @@ class PetApplicationsController < ApplicationController
     pet.save
     application.approval_status = "false"
     application.save
-    # pet_application.approval_status = "false"
+    # pet_application.approved = "false"
     # pet_application.save
     redirect_to "/applications/#{application.id}"
   end
