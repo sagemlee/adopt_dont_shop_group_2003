@@ -48,10 +48,42 @@ describe "user sees one application" do
       within("#pet-#{pet1.id}") do
         click_link "Approve Application for Pet"
       end
-      
+
       expect(current_path).to eq("/applications/#{application2.id}")
       expect(page).to have_content("No more applications can be approved for this pet at this time.")
-
     end
+
+    it "shows link to unapprove previously approved pets" do
+      pet1 = create(:pet)
+
+      application1 = create(:application)
+
+      PetApplication.create!(application: application1, pet: pet1)
+
+      visit "/applications/#{application1.id}"
+
+      within("#pet-#{pet1.id}") do
+        click_link "Approve Application for Pet"
+      end
+
+      visit "/applications/#{application1.id}"
+
+      within("#pet-#{pet1.id}") do
+        click_link "Approve Application for Pet"
+        expect(page).to_not have_link("Approve Application for Pet")
+        click_link("Unapprove Application for Pet")
+      end
+
+      expect(current_path).to eq("/applications/#{application1.id}")
+
+      within("#pet-#{pet1.id}") do
+        expect(page).to have_link("Approve Application for Pet")
+        expect(page).to_not have_link("Unapprove Application for Pet")
+      end
+
+      visit "/pets/#{pet1.id}"
+      expect(page).to have_content("adoptable")
+      expect(page).to_not have_content("On hold for #{application1.name}")
+    end 
   end
 end
