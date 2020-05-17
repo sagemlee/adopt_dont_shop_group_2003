@@ -24,3 +24,6 @@ shelter3.pets.create(name: "Rommel", age: 2, sex: "male", img_url: "https://adop
 shelter1.reviews.create(title: "Love This Place", rating: 5, content:"This is my favorite shelter.", img_url: "https://cdn2-www.dogtime.com/assets/uploads/2010/12/adopt-a-pet-dog-puppy-3.jpg")
 shelter1.reviews.create(title: "Only Alright", rating: 3, content:"This place is okay.", img_url: "https://www.mercurynews.com/wp-content/uploads/2017/10/sjm-l-shelter-1101-22.jpg?w=620")
 shelter2.reviews.create(title: "Hate This Place", rating: 1, content:"Go somewhere else to adopt, trust me.", img_url: "https://media.npr.org/assets/img/2013/02/06/dog_wide-e19af42dcba6ac82e35773015db5d04ef49c9beb-s1600-c85.jpg")
+
+application1.create(name: "App 1", address: "1 Imaginary Dr", city: "City 1", state: "State 1", zipcode: "Zip 1", phone_number: "111-111-1111", description: "Description 1")
+application2.create(name: "App 2", address: "2 Imaginary Dr", city: "City 2", state: "State 2", zipcode: "Zip 2", phone_number: "222-222-2222", description: "Description 2")
