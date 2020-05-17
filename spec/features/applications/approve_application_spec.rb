@@ -84,5 +84,31 @@ describe "user sees one application" do
       expect(page).to have_content("adoptable")
       expect(page).to_not have_content("On hold for #{application1.name}")
     end
+
+    it "displays flash message when approving an application for a pet whom already has an approval" do
+      pet1 = create(:pet)
+
+      application1 = create(:application)
+      application2 = create(:application)
+
+      PetApplication.create!(application: application1, pet: pet1)
+      PetApplication.create!(application: application2, pet: pet1)
+
+      visit "/applications/#{application1.id}"
+
+      within("#pet-#{pet1.id}") do
+        click_link "Approve Application for Pet"
+      end
+
+      visit "/applications/#{application2.id}"
+
+      within("#pet-#{pet1.id}") do
+        click_link "Approve Application for Pet"
+      end
+      
+      expect(current_path).to eq("/applications/#{application2.id}")
+      expect(page).to have_content("No more applications can be approved for this pet at this time.")
+
+    end
   end
 end

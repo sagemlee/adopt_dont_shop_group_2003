@@ -27,7 +27,6 @@ describe "user creates application for more than one pet" do
       expect(page).to have_content("pending")
       visit "/pets/#{pet2.id}"
       expect(page).to have_content("pending")
-
     end
   end
 end
