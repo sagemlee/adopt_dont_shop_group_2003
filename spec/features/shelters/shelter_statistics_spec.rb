@@ -15,7 +15,19 @@ describe "When user visits shelter show page" do
       expect(page).to have_content("Number of Pets at Shelter: #{shelter1.pets.count_of_pets}")
     end 
   end
-  it "displays average shelter review reating" do
+  it "displays average shelter review rating" do
+
+    shelter1 = create(:shelter)
+
+    review1 = create(:review, shelter_id: "#{shelter1.id}", rating: "5")
+    review2 = create(:review, shelter_id: "#{shelter1.id}", rating: "10")
+    review2 = create(:review, shelter_id: "#{shelter1.id}", rating: "7")
+
+    visit "/shelters/#{shelter1.id}"
+
+     within(".shelter-average") do
+      expect(page).to have_content("Average Review Rating: #{shelter1.reviews.average_rating}")
+    end 
   end
   it "displays number of applications on file for that shelter" do
   end
