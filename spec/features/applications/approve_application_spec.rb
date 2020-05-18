@@ -30,7 +30,6 @@ describe "user sees one application" do
       expect(page).to_not have_content("On hold for #{application1.name}")
 
     end
-
     it "does not display approval button for an application for a pet whom already has an approval" do
       pet1 = create(:pet)
 
