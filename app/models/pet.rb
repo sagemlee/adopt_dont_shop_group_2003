@@ -32,4 +32,8 @@ class Pet < ApplicationRecord
    Pet.joins(:pet_applications)
       .where("pet_applications.approved = 'true'")
   end
+
+  def self.pets_with_pending_status
+    Pet.where(adoption_status: 'pending')
+  end
 end
