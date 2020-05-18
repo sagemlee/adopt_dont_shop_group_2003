@@ -1,6 +1,6 @@
 class Pet < ApplicationRecord
   belongs_to :shelter
-  has_many :pet_applications
+  has_many :pet_applications, dependent: :destroy
   has_many :applications, through: :pet_applications
 
   validates_presence_of :name
@@ -23,4 +23,8 @@ class Pet < ApplicationRecord
     Pet.order(:adoption_status)
   end
 
+  def self.pets_with_approved_apps
+   Pet.joins(:pet_applications)
+      .where("pet_applications.approved = 'true'")
+  end
 end

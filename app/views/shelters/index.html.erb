@@ -9,9 +9,14 @@
   <div class="row">
     <% @shelters.each do |shelter| %>
       <div class="col-4 center">
-        <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"  %><br>
-        <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
-        <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
+        <section id="shelter-<%= shelter.id %>">
+          <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"  %><br>
+          <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
+            <% if !shelter.pets.pets_with_approved_apps.empty? %>
+            <% else %>
+              <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
+            <% end %>
+        </section>
       </div>
     <% end %>
   </div>
