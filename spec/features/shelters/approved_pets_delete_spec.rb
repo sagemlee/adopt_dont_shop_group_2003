@@ -52,31 +52,45 @@ describe "user tries to delete shelter from shelter show that has approved apps 
 end
 
 describe "user deletes shelter that has no pets with approved applications" do
-  it "deletes all of its pets" do
+  before(:each) do
+    @shelter1 = create(:shelter)
+    @shelter2 = create(:shelter)
+    @pet1 = create(:pet, shelter_id: "#{@shelter1.id}", adoption_status: "pending")
+    @pet2 = create(:pet, shelter_id: "#{@shelter1.id}")
+    @pet3 = create(:pet, shelter_id: "#{@shelter2.id}", adoption_status: "pending")
     
-    shelter1 = create(:shelter)
-    shelter2 = create(:shelter)
-    pet1 = create(:pet, shelter_id: "#{shelter1.id}", adoption_status: "pending")
-    pet2 = create(:pet, shelter_id: "#{shelter1.id}")
-    pet3 = create(:pet, shelter_id: "#{shelter2.id}", adoption_status: "pending")
+    @application1 = create(:application)
+    @application2 = create(:application)
+    @application3 = create(:application)
     
-    application1 = create(:application)
-    application2 = create(:application)
-    application3 = create(:application)
-    
-    PetApplication.create!(pet: pet1, application: application1)
-    PetApplication.create!(pet: pet1, application: application2)
-    PetApplication.create!(pet: pet2, application: application3)
-    PetApplication.create!(pet: pet3, application: application3)
+    PetApplication.create!(pet: @pet1, application: @application1)
+    PetApplication.create!(pet: @pet1, application: @application2)
+    PetApplication.create!(pet: @pet2, application: @application3)
+    PetApplication.create!(pet: @pet3, application: @application3)
 
-    visit "/shelters/#{shelter1.id}"
+  end   
+  it "deletes all of its pets from shelter show" do
 
-    within("#shelter-#{shelter1.id}") do
+    visit "/shelters/#{@shelter1.id}"
+    
+    within("#shelter-#{@shelter1.id}") do
       click_button "Delete Shelter"
     end
     
     pets = Pet.all
 
-    expect(pets).to eq([pet3])
+    expect(pets).to eq([@pet3])
+  end
+  it "deletes all of its pets from shelter index" do
+
+    visit "/shelters"
+    
+    within("#shelter-#{@shelter1.id}") do
+      click_button "Delete Shelter"
+    end
+    
+    pets = Pet.all
+
+    expect(pets).to eq([@pet3])
   end
 end
