@@ -12,7 +12,7 @@
         <section id="shelter-<%= shelter.id %>">
           <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"  %><br>
           <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
-            <% if !shelter.pets.pets_with_approved_apps.empty? %>
+            <% if !shelter.pets.pets_with_approved_apps.empty? && !shelter.pets.pets_with_pending_status.empty? %>
             <% else %>
               <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
             <% end %>

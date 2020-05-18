@@ -5,7 +5,7 @@ describe "user tries to delete shelter from shelter index that has approved apps
     
     shelter1 = create(:shelter)
 
-    pet1 = create(:pet, shelter_id: "#{shelter1.id}", adoption_status: "pending")
+    pet1 = create(:pet, shelter_id: "#{shelter1.id}")
     pet2 = create(:pet, shelter_id: "#{shelter1.id}")
     pet3 = create(:pet, shelter_id: "#{shelter1.id}")
 
@@ -21,7 +21,7 @@ describe "user tries to delete shelter from shelter index that has approved apps
     visit "/shelters"
 
     within("#shelter-#{shelter1.id}") do
-      expect(page).to_not have_content("Delete Shelter")
+      expect(page).to_not have_content(:link_or_button, "Delete Shelter")
     end 
   end
 end
@@ -30,7 +30,7 @@ describe "user tries to delete shelter from shelter show that has approved apps 
   it "cannot delete shelter" do
     
     shelter = create(:shelter)
-    pet1 = create(:pet, shelter_id: "#{shelter.id}", adoption_status: "pending")
+    pet1 = create(:pet, shelter_id: "#{shelter.id}")
     pet2 = create(:pet, shelter_id: "#{shelter.id}")
     pet3 = create(:pet, shelter_id: "#{shelter.id}")
 
@@ -46,7 +46,7 @@ describe "user tries to delete shelter from shelter show that has approved apps 
     visit "/shelters/#{shelter.id}"
 
     within("#shelter-#{shelter.id}") do
-      expect(page).to_not have_content("Delete Shelter")
+      expect(page).to_not have_content(:link_or_button, "Delete Shelter")
     end 
   end
 end
@@ -55,9 +55,9 @@ describe "user deletes shelter that has no pets with approved applications" do
   before(:each) do
     @shelter1 = create(:shelter)
     @shelter2 = create(:shelter)
-    @pet1 = create(:pet, shelter_id: "#{@shelter1.id}", adoption_status: "pending")
+    @pet1 = create(:pet, shelter_id: "#{@shelter1.id}")
     @pet2 = create(:pet, shelter_id: "#{@shelter1.id}")
-    @pet3 = create(:pet, shelter_id: "#{@shelter2.id}", adoption_status: "pending")
+    @pet3 = create(:pet, shelter_id: "#{@shelter2.id}")
     
     @application1 = create(:application)
     @application2 = create(:application)
@@ -92,5 +92,39 @@ describe "user deletes shelter that has no pets with approved applications" do
     pets = Pet.all
 
     expect(pets).to eq([@pet3])
+  end
+end
+
+describe "user tries to delete shelter from shelter index that has pets with pending adoption status" do
+  it "cannot delete shelter" do
+    
+    shelter1 = create(:shelter)
+
+    pet1 = create(:pet, shelter_id: "#{shelter1.id}", adoption_status: "pending")
+    pet2 = create(:pet, shelter_id: "#{shelter1.id}")
+    pet3 = create(:pet, shelter_id: "#{shelter1.id}")
+
+    visit "/shelters"
+
+    within("#shelter-#{shelter1.id}") do
+      expect(page).to_not have_content(:link_or_button, "Delete Shelter")
+    end 
+  end
+end
+
+describe "user tries to delete shelter from shelter show that has pets with pending adoption status" do
+  it "cannot delete shelter" do
+    
+    shelter1 = create(:shelter)
+
+    pet1 = create(:pet, shelter_id: "#{shelter1.id}", adoption_status: "pending")
+    pet2 = create(:pet, shelter_id: "#{shelter1.id}")
+    pet3 = create(:pet, shelter_id: "#{shelter1.id}")
+
+    visit "/shelters/#{shelter1.id}"
+
+    within("#shelter-#{shelter1.id}") do
+      expect(page).to_not have_content(:link_or_button, "Delete Shelter")
+    end 
   end
 end
