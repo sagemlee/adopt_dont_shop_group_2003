@@ -51,6 +51,7 @@ describe "user sees one application" do
         expect(page).to_not have_link("Approve Application for Pet")
       end
     end
+    
     it "shows link to unapprove previously approved pets" do
       pet1 = create(:pet)
 

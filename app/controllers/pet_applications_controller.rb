@@ -10,6 +10,7 @@ class PetApplicationsController < ApplicationController
     
     pet.adoption_status = "pending"
     pet.save
+
     pet_application.approved = "true"
     pet_application.save
 
