@@ -15,14 +15,16 @@
         <p>Description: <%= @pet.description %></p>
         <p>Adoption Status: <%= @pet.adoption_status %></p>
         <% if !@pet.pet_applications.approved_application.nil? %>
-        <p>On hold for <%= @pet.pet_applications.approved_application.application.name %></p>
+          <p>On hold for <%= @pet.pet_applications.approved_application.application.name %></p>
         <% end %>
         <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
-        <%= button_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
+        <% if @pet.pet_applications.approved_application.nil? %>
+          <%= button_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
+        <%end%>
         <% if favorite.contents.has_key?(@pet.id.to_s) %>
-        <%= button_to "Remove Pet from Favorites", "/favorites/#{@pet.id}", method: :delete %>
+          <%= button_to "Remove Pet from Favorites", "/favorites/#{@pet.id}", method: :delete %>
         <% else %>
-        <%= button_to "Add Pet to Favorites", "/favorites/#{@pet.id}", method: :patch %>
+          <%= button_to "Add Pet to Favorites", "/favorites/#{@pet.id}", method: :patch %>
         <% end %><br>
         <%= link_to "See applications", "/pets/#{@pet.id}/applications" %>
       </section>
