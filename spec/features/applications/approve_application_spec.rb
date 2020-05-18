@@ -30,8 +30,7 @@ describe "user sees one application" do
       expect(page).to_not have_content("On hold for #{application1.name}")
 
     end
-
-    it "displays flash message when approving an application for a pet whom already has an approval" do
+    it "does not display approval button for an application for a pet whom already has an approval" do
       pet1 = create(:pet)
 
       application1 = create(:application)
@@ -52,7 +51,6 @@ describe "user sees one application" do
         expect(page).to_not have_link("Approve Application for Pet")
       end
     end
-
     it "shows link to unapprove previously approved pets" do
       pet1 = create(:pet)
 
