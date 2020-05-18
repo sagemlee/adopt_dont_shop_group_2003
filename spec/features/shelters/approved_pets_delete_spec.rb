@@ -80,12 +80,3 @@ describe "user deletes shelter that has no pets with approved applications" do
     expect(pets).to eq([pet3])
   end
 end
-
-# User Story 27, Shelters can be Deleted as long as all pets do 
-# not have approved applications on them
-
-# As a visitor
-# If a shelter doesn't have any pets with a pending status
-# I can delete that shelter
-# When that shelter is deleted
-# Then all of their pets are deleted as well

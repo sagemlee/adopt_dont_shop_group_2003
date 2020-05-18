@@ -33,6 +33,7 @@ class SheltersController < ApplicationController
   def destroy
     shelter = Shelter.find(params[:shelter_id])
     pet_ids = shelter.pets.map { |pet| pet.id}
+    
     Pet.destroy(pet_ids)
     shelter.destroy
 
