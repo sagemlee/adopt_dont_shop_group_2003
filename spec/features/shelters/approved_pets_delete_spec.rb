@@ -27,7 +27,7 @@ describe "user tries to delete shelter from shelter index that has approved apps
 end
 
 describe "user tries to delete shelter from shelter show that has approved apps on any pet" do
-  xit "cannot delete shelter" do
+  it "cannot delete shelter" do
     
     shelter = create(:shelter)
     pet1 = create(:pet, shelter_id: "#{shelter.id}", adoption_status: "pending")
@@ -35,7 +35,10 @@ describe "user tries to delete shelter from shelter show that has approved apps 
     pet3 = create(:pet, shelter_id: "#{shelter.id}")
 
     visit "/shelters/#{shelter.id}"
-    click_button "Delete Shelter"
+
+    within("#shelter-#{shelter.id}") do
+      expect(page).to_not have_content("Delete Shelter")
+    end 
   end
 end
 
