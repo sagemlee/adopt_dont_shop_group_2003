@@ -13,9 +13,14 @@ class SheltersController < ApplicationController
 
   def create
     shelter = Shelter.new(shelter_params)
-
     shelter.save
-    redirect_to "/shelters/"
+
+    if shelter.save
+      redirect_to "/shelters"
+    else
+      flash[:notice] = "Please fill out all fields to create a shelter"
+      redirect_to "/shelters/new"
+    end 
   end
 
   def edit
@@ -25,9 +30,13 @@ class SheltersController < ApplicationController
   def update
     shelter = Shelter.find(params[:shelter_id])
     shelter.update(shelter_params)
-
-    shelter.save
-    redirect_to "/shelters/#{shelter.id}"
+    
+    if shelter.save
+      redirect_to "/shelters/#{shelter.id}"
+    else
+      flash[:notice] = "Please fill out all fields to update the shelter"
+      redirect_to "/shelters/#{shelter.id}/edit"
+    end 
   end
 
   def destroy

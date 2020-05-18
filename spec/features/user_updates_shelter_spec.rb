@@ -27,6 +27,36 @@ describe "user updates a shelter" do
         expect(page).to have_content("Update state")
         expect(page).to have_content("Update zip")
       end
+        it "displays flash message if missing content" do
+
+        shelter = create(:shelter)
+
+        visit "shelters/#{shelter.id}"
+        click_link "Update Shelter"
+
+        fill_in :name, with: "test1"
+        fill_in :address, with: "test1"
+        fill_in :city, with: "test1"
+        fill_in :state, with: "test1"
+        #missing zip
+
+        click_button "Submit"
+
+        expect(page).to have_content("Please fill out all fields to update the shelter")
+        expect(current_path).to eq("/shelters/#{shelter.id}/edit")
+
+        fill_in :name, with: "test1"
+        fill_in :address, with: "test1"
+        fill_in :city, with: "test1"
+        fill_in :state, with: "test1"
+        fill_in :zip, with: "test1"
+
+        click_button "Submit"
+
+        expect(current_path).to eq("/shelters/#{shelter.id}")
+
+        expect(page).to have_content("test1")
+      end
     end
   end
 end
