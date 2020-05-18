@@ -20,10 +20,10 @@ describe "user tries to delete pet, that has an approved application" do
       visit '/pets'
 
       within("#pet-#{pet2.id}") do
-        expect(page).to_not have_content("Delete Pet")
+        expect(page).to_not have_button("Delete Pet")
       end
 
-      visit '/pets/#{pet2.id}'
-      expect(page).to_not have_content("Delete Pet")
+      visit "/pets/#{pet2.id}"
+      expect(page).to_not have_button("Delete Pet")
     end
 end
