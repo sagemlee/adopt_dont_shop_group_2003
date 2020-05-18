@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe Pet, type: :model do
   describe "validations" do
-    it { should validate_presence_of :name }
+    it { should validate_presence_of :name}
+    it { should validate_presence_of :img_url}
+    it { should validate_presence_of :age}
+    it { should validate_presence_of :sex}
+    it { should validate_presence_of :description}
   end
   describe "relationships" do
     it { should belong_to :shelter }
@@ -63,7 +67,7 @@ describe Pet, type: :model do
       pets = Pet.all
 
       expect(pets.pets_with_approved_apps).to eq([pet1])
-    end 
+    end
     it "pets_with_pending_status" do
 
       shelter = create(:shelter)
@@ -75,6 +79,6 @@ describe Pet, type: :model do
       pets = Pet.all
 
       expect(pets.pets_with_pending_status).to eq([pet1, pet4])
-    end 
+    end
   end
 end

@@ -4,6 +4,11 @@ class Pet < ApplicationRecord
   has_many :applications, through: :pet_applications
 
   validates_presence_of :name
+  validates_presence_of :img_url
+  validates_presence_of :age
+  validates_presence_of :sex
+  validates_presence_of :description
+
   validates :sex, inclusion: { in: %w(male female),
     message: "%{value} is not a valid sex" }
 
