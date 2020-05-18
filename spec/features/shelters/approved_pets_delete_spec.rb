@@ -34,6 +34,15 @@ describe "user tries to delete shelter from shelter show that has approved apps 
     pet2 = create(:pet, shelter_id: "#{shelter.id}")
     pet3 = create(:pet, shelter_id: "#{shelter.id}")
 
+    application1 = create(:application)
+    application2 = create(:application)
+    application3 = create(:application)
+
+    PetApplication.create!(pet: pet1, application: application1, approved: "true")
+    PetApplication.create!(pet: pet1, application: application2)
+    PetApplication.create!(pet: pet2, application: application3)
+    PetApplication.create!(pet: pet3, application: application3)
+
     visit "/shelters/#{shelter.id}"
 
     within("#shelter-#{shelter.id}") do
@@ -42,12 +51,41 @@ describe "user tries to delete shelter from shelter show that has approved apps 
   end
 end
 
-# User Story 26, Shelters with Pets that have pending status cannot be Deleted
+describe "user deletes shelter that has no pets with approved applications" do
+  it "deletes all of its pets" do
+    
+    shelter1 = create(:shelter)
+    shelter2 = create(:shelter)
+    pet1 = create(:pet, shelter_id: "#{shelter1.id}", adoption_status: "pending")
+    pet2 = create(:pet, shelter_id: "#{shelter1.id}")
+    pet3 = create(:pet, shelter_id: "#{shelter2.id}", adoption_status: "pending")
+    
+    application1 = create(:application)
+    application2 = create(:application)
+    application3 = create(:application)
+    
+    PetApplication.create!(pet: pet1, application: application1)
+    PetApplication.create!(pet: pet1, application: application2)
+    PetApplication.create!(pet: pet2, application: application3)
+    PetApplication.create!(pet: pet3, application: application3)
+
+    visit "/shelters/#{shelter1.id}"
+
+    within("#shelter-#{shelter1.id}") do
+      click_button "Delete Shelter"
+    end
+    
+    pets = Pet.all
+
+    expect(pets).to eq([pet3])
+  end
+end
+
+# User Story 27, Shelters can be Deleted as long as all pets do 
+# not have approved applications on them
 
 # As a visitor
-# If a shelter has approved applications for any of their pets
-# I can not delete that shelter
-# Either:
-# - there is no button visible for me to delete the shelter
-# - if I click on the delete link for deleting a shelter, 
-# I see a flash message indicating that the shelter can not be deleted.
+# If a shelter doesn't have any pets with a pending status
+# I can delete that shelter
+# When that shelter is deleted
+# Then all of their pets are deleted as well
