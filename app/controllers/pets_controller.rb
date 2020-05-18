@@ -21,16 +21,24 @@ class PetsController < ApplicationController
     shelter = Shelter.find(params[:shelter_id])
     pet = shelter.pets.create(pet_params)
 
-    pet.save
-    redirect_to "/shelters/#{shelter.id}/pets"
+    if pet.save
+      redirect_to "/shelters/#{shelter.id}/pets"
+    else
+      flash[:notice] = pet.errors.full_messages
+      redirect_back fallback_location: "/shelters/#{shelter.id}/pets"
+    end
   end
 
   def update
     pet = Pet.find(params[:pet_id])
     pet.update(pet_params)
 
-    pet.save
-    redirect_to "/pets/#{pet.id}"
+    if pet.save
+      redirect_to "/pets/#{pet.id}"
+    else
+      flash[:notice] = pet.errors.full_messages
+      redirect_back fallback_location: "/pets"
+    end
   end
 
   def destroy
