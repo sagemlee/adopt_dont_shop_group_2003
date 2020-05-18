@@ -84,6 +84,11 @@
     </div>
     <div class="col-4 center">
       <section class="shelter-average">
+        <% if @shelter.reviews.empty? %>
+          <p>Average Review Rating: 0 </p>
+        <% else %>
+          <p>Average Review Rating: <%= @shelter.reviews.average_rating.round(2) %></p>
+        <% end %>
       </section>
     </div>
     <div class="col-4 center">
