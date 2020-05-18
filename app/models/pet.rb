@@ -23,4 +23,8 @@ class Pet < ApplicationRecord
     Pet.order(:adoption_status)
   end
 
+  def self.pets_with_approved_apps
+   Pet.joins(:pet_applications)
+      .where("pet_applications.approved = 'true'")
+  end
 end

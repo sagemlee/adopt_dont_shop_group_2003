@@ -46,5 +46,23 @@ describe Pet, type: :model do
 
       expect(pets.all_pets_by_adoption_status).to eq([pet2, pet3, pet1])
     end
+    it "pets_with_approved_apps" do
+
+      shelter = create(:shelter)
+      pet1 = create(:pet, shelter_id: "#{shelter.id}")
+      pet2 = create(:pet)
+      pet3 = create(:pet)
+
+      application1 = create(:application)
+      application2 = create(:application)
+
+      pet_application1 = PetApplication.create(pet: pet1, application: application1, approved: 'true')
+      pet_application2 = PetApplication.create(pet: pet2, application: application1)
+      pet_application2 = PetApplication.create(pet: pet3, application: application2)
+
+      pets = Pet.all
+
+      expect(pets.pets_with_approved_apps).to eq([pet1])
+    end 
   end
 end
