@@ -69,3 +69,32 @@
     <% end %>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 center">
+      <h3>Shelter Statitistics</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 center">
+      <section class="shelter-count">
+        <p>Number of Pets at Shelter: <%= @shelter.pets.count_of_pets %></p>
+      </section>
+    </div>
+    <div class="col-4 center">
+      <section class="shelter-average">
+        <% if @shelter.reviews.empty? %>
+          <p>Average Review Rating: 0 </p>
+        <% else %>
+          <p>Average Review Rating: <%= @shelter.reviews.average_rating.round(2) %></p>
+        <% end %>
+      </section>
+    </div>
+    <div class="col-4 center">
+      <section class="shelter-apps">
+        <p>Number of Applications on File: <%= @shelter.pets.number_of_apps %></p>
+      </section>
+    </div>
+  </div>
+</div>
