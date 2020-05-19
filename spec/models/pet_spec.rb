@@ -80,5 +80,30 @@ describe Pet, type: :model do
 
       expect(pets.pets_with_pending_status).to eq([pet1, pet4])
     end
+    it "number_of_apps" do
+
+      shelter = create(:shelter)
+      pet1 = create(:pet, shelter_id: "#{shelter.id}")
+      pet2 = create(:pet, shelter_id: "#{shelter.id}")
+      pet3 = create(:pet, shelter_id: "#{shelter.id}")
+      pet4 = create(:pet, shelter_id: "#{shelter.id}")
+      pet5 = create(:pet, shelter_id: "#{shelter.id}")
+
+      application1 = create(:application)
+      application2 = create(:application)
+      application3 = create(:application)
+      application4 = create(:application)
+
+      pet_application1 = PetApplication.create(pet: pet1, application: application1, approved: 'true')
+      pet_application2 = PetApplication.create(pet: pet2, application: application1)
+      pet_application3 = PetApplication.create(pet: pet3, application: application2)
+      pet_application4 = PetApplication.create(pet: pet4, application: application3)
+      pet_application5 = PetApplication.create(pet: pet4, application: application4)
+      pet_application6 = PetApplication.create(pet: pet5, application: application4)
+
+      pets = Pet.all
+
+      expect(pets.number_of_apps).to eq(4)
+    end
   end
 end

@@ -13,7 +13,7 @@ class Pet < ApplicationRecord
     message: "%{value} is not a valid sex" }
 
   def self.adoptable_pets
-    select { |pet| pet.adoption_status == "adoptable" }
+    Pet.where('adoption_status = ?', 'adoptable')
   end
 
   def self.count_of_pets
@@ -35,5 +35,11 @@ class Pet < ApplicationRecord
 
   def self.pets_with_pending_status
     Pet.where(adoption_status: 'pending')
+  end
+
+  def self.number_of_apps
+    Pet.joins(:pet_applications => :application)
+       .distinct
+       .count(:applications)
   end
 end
