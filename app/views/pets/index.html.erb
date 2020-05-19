@@ -16,7 +16,7 @@
         <p>Sex: <%= pet.sex %></p>
         <p>Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
         <%= link_to "Edit Pet", "/pets/#{pet.id}/edit"%>
-        <% if !@pets.pets_with_approved_apps.includes(pet) %>
+        <% if !@pets.pets_with_approved_apps.include?(pet) %>
         <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
         <%end %>
       </div>
