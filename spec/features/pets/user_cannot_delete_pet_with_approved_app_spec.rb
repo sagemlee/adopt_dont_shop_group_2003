@@ -13,7 +13,7 @@ describe "user tries to delete pet, that has an approved application" do
     PetApplication.create!(application: @application1, pet: @pet2)
   end
 
-  it "on pets index page will not see delete button" do
+  it "will not see delete button on pets index page" do
 
     visit "/applications/#{@application1.id}"
 
@@ -31,7 +31,7 @@ describe "user tries to delete pet, that has an approved application" do
     expect(@page).to_not have_button("Delete Pet")
   end
 
-  it "on shelter pets index page will not see delete button" do
+  it "will not see delete button on shelter pets index page" do
 
     visit "/applications/#{@application1.id}"
 
