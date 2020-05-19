@@ -61,4 +61,21 @@
       </section>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 center">
+      <section id="pets_with_approved_apps">
+        <h3> Pets with Approved Applications </h3>
+        <% @pets.pets_with_approved_apps.each do |pet|%>
+          <% if !pet.applications.empty? %>
+          <div class="col-4 center">
+            <section id="pets_with_approved_apps-<%= pet.id %>">
+              <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+              <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+            </section>
+          </div>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
 </div>
