@@ -20,7 +20,9 @@
         <p>Approximate Age: <%= pet.age %></p>
         <p>Sex: <%= pet.sex %></p>
         <%= link_to "Edit Pet", "/pets/#{pet.id}/edit"%>
+        <% if !@shelter.pets.pets_with_approved_apps.include?(pet) %>
         <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
+        <% end %>
       </div>
     <% end %>
   </div>
