@@ -30,7 +30,14 @@ class Pet < ApplicationRecord
 
   def self.pets_with_approved_apps
    Pet.joins(:pet_applications)
+      .distinct
       .where('pet_applications.approved = ?', 'true')
+  end
+
+  def self.pets_with_unapproved_apps
+   Pet.joins(:pet_applications)
+      .distinct
+      .where('pet_applications.approved = ?', 'false')
   end
 
   def self.pets_with_pending_status

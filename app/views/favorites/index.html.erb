@@ -48,15 +48,28 @@
     <div class="col-12 center">
       <section id="pets_with_applications">
         <h3> Pets with Pending Applications </h3>
-        <% @pets.each do |pet|%>
-        <% if !pet.applications.empty? %>
-        <div class="col-4 center">
-          <section id="pets_with_applications-<%= pet.id %>">
-             <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-             <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
-           </section>
+        <% @pets.pets_with_unapproved_apps.each do |pet|%>
+          <div class="col-4 center">
+            <section id="pets_with_applications-<%= pet.id %>">
+              <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+              <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+            </section>
           </div>
         <% end %>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 center">
+      <section id="pets_with_approved_apps">
+        <h3> Pets with Approved Applications </h3>
+        <% @pets.pets_with_approved_apps.each do |pet|%>
+          <div class="col-4 center">
+            <section id="pets_with_approved_apps-<%= pet.id %>">
+              <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+              <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
+            </section>
+          </div>
         <% end %>
       </section>
     </div>

@@ -48,7 +48,7 @@ describe "user visits favorites index page" do
       application2 = create(:application)
 
       PetApplication.create!(application: application1, pet: pet2)
-      PetApplication.create!(application: application2, pet: pet3)
+      PetApplication.create!(application: application2, pet: pet3, approved: 'true')
 
       visit '/favorites'
 
@@ -60,7 +60,27 @@ describe "user visits favorites index page" do
 
       visit '/favorites'
 
-      within("#pets_with_applications-#{pet3.id}") do
+      within("#pets_with_applications") do
+        expect(page).to_not have_link("#{pet1.name}")
+      end
+    end
+    it "displays section of pets with approved applications" do
+
+      pet1 = create(:pet)
+      pet2 = create(:pet)
+      pet3 = create(:pet)
+
+      application1 = create(:application)
+      application2 = create(:application)
+      application3 = create(:application)
+
+      PetApplication.create!(application: application1, pet: pet1)
+      PetApplication.create!(application: application2, pet: pet2)
+      PetApplication.create!(application: application3, pet: pet3, approved: "true")
+
+      visit '/favorites'
+
+      within("#pets_with_approved_apps-#{pet3.id}") do
         expect(page).to have_link("#{pet3.name}")
         click_link("#{pet3.name}")
         expect(current_path).to eq("/pets/#{pet3.id}")
@@ -68,10 +88,13 @@ describe "user visits favorites index page" do
 
       visit '/favorites'
 
-      within("#pets_with_applications") do
+      within("#pets_with_approved_apps") do
         expect(page).to_not have_link("#{pet1.name}")
       end
 
+      within("#pets_with_approved_apps") do
+        expect(page).to_not have_link("#{pet2.name}")
+      end
     end
   end
 end
