@@ -11,7 +11,7 @@
       <%= form_tag "/shelters/#{@review.shelter_id}/reviews/#{@review.id}", method: :patch do %>
       <%= label_tag "Title:" %>
       <%= text_field_tag :title, @review.title %><br>
-      <%= label_tag "Rating:" %>
+      <%= label_tag "Rating (1-10):" %>
       <%= text_field_tag :rating, @review.rating %><br>
       <%= label_tag "Content:" %>
       <%= text_field_tag :content, @review.content %><br>
