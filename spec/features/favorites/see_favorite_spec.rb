@@ -58,14 +58,6 @@ describe "user visits favorites index page" do
         expect(current_path).to eq("/pets/#{pet2.id}")
       end
 
-      # visit '/favorites'
-
-      # within("#pets_with_applications-#{pet3.id}") do
-      #   expect(page).to have_link("#{pet3.name}")
-      #   click_link("#{pet3.name}")
-      #   expect(current_path).to eq("/pets/#{pet3.id}")
-      # end
-
       visit '/favorites'
 
       within("#pets_with_applications") do
@@ -106,12 +98,3 @@ describe "user visits favorites index page" do
     end
   end
 end
-
-# User Story 37, List of Pets with Approved Applications
-
-# As a visitor
-# After an application has been approved for one or more pets
-# When I visit the favorites page
-# I see a section on the page that has a list of all of the pets 
-# that have an approved application on them
-# Each pet's name is a link to their show page
