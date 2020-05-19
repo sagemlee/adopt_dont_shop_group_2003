@@ -14,6 +14,7 @@
 <div class="container">
   <div class="row">
     <% @shelter.pets.all_pets_by_adoption_status.each do |pet| %>
+      <section id="pet-<%= pet.id %>">
       <div class="col-4 center">
         <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
         <img src=<%= "#{pet.img_url}" %> alt=<%= "#{pet.id}" %> height="100" width="100">
@@ -24,6 +25,7 @@
         <%= button_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
         <% end %>
       </div>
+      </section>
     <% end %>
   </div>
   <div class="row">
