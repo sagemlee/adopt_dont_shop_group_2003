@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Approving an Application" do
-  describe "User clicks link to approve a pet and is taken to the pets show page" do
+  describe "user clicks link to approve a pet and is taken to the pets show page" do
     before(:each) do
       @pet1 = create(:pet)
       @pet2 = create(:pet)
@@ -10,11 +10,9 @@ describe "Approving an Application" do
       PetApplication.create!(application: @application1, pet: @pet2)
 
       visit "/applications/#{@application1.id}"
-    end 
+    end
 
     it "sees status for pet as pending and that the pet is on hold" do
-
-      visit "/applications/#{@application1.id}"
 
       within("#pet-#{@pet1.id}") do
         click_link "Approve Application for Pet"
