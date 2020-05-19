@@ -48,7 +48,7 @@ describe "user visits favorites index page" do
       application2 = create(:application)
 
       PetApplication.create!(application: application1, pet: pet2)
-      PetApplication.create!(application: application2, pet: pet3)
+      PetApplication.create!(application: application2, pet: pet3, approved: 'true')
 
       visit '/favorites'
 
@@ -58,13 +58,13 @@ describe "user visits favorites index page" do
         expect(current_path).to eq("/pets/#{pet2.id}")
       end
 
-      visit '/favorites'
+      # visit '/favorites'
 
-      within("#pets_with_applications-#{pet3.id}") do
-        expect(page).to have_link("#{pet3.name}")
-        click_link("#{pet3.name}")
-        expect(current_path).to eq("/pets/#{pet3.id}")
-      end
+      # within("#pets_with_applications-#{pet3.id}") do
+      #   expect(page).to have_link("#{pet3.name}")
+      #   click_link("#{pet3.name}")
+      #   expect(current_path).to eq("/pets/#{pet3.id}")
+      # end
 
       visit '/favorites'
 
@@ -93,14 +93,6 @@ describe "user visits favorites index page" do
         click_link("#{pet3.name}")
         expect(current_path).to eq("/pets/#{pet3.id}")
       end
-
-      # visit '/favorites'
-
-      # within("#pets_with_applications-#{pet3.id}") do
-      #   expect(page).to have_link("#{pet3.name}")
-      #   click_link("#{pet3.name}")
-      #   expect(current_path).to eq("/pets/#{pet3.id}")
-      # end
 
       visit '/favorites'
 

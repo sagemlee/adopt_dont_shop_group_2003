@@ -48,7 +48,7 @@
     <div class="col-12 center">
       <section id="pets_with_applications">
         <h3> Pets with Pending Applications </h3>
-        <% @pets.each do |pet|%>
+        <% @pets.pets_with_unapproved_apps.each do |pet|%>
         <% if !pet.applications.empty? %>
         <div class="col-4 center">
           <section id="pets_with_applications-<%= pet.id %>">
