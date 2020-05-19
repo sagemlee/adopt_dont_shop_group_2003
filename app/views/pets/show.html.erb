@@ -15,7 +15,7 @@
         <p>Description: <%= @pet.description %></p>
         <p>Adoption Status: <%= @pet.adoption_status %></p>
         <% if !@pet.pet_applications.approved_application.nil? %>
-          <p>On hold for <%= @pet.pet_applications.approved_application.application.name %></p>
+          <p>On hold for <%= link_to "#{@pet.pet_applications.approved_application.application.name}", "/applications/#{@pet.pet_applications.approved_application.application.id}" %></p>
         <% end %>
         <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
         <% if @pet.pet_applications.approved_application.nil? %>
