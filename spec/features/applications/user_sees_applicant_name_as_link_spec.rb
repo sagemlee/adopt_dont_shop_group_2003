@@ -11,7 +11,6 @@ describe "user sees any applicant name" do
 
       visit "/pets/#{pet1.id}"
       expect(page).to have_link("#{application.name}")
-
     end
   end
 end

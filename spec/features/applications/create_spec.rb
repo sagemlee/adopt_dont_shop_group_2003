@@ -33,6 +33,7 @@ describe "user creates application" do
 
       click_button "Submit Application"
     end
+
     it "shows pet application page" do
 
       expect(page).to have_content("Your application has been submitted")
@@ -53,6 +54,7 @@ describe "user creates application" do
       expect(new_application.description).to eq("Bob likes cheese")
     end
   end
+  
   describe "user does not fill out all information" do
     it "displays a flash message and redirects user back to new application page" do
       pet1 = create(:pet)
