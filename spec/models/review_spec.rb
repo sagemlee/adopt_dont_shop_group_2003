@@ -4,7 +4,7 @@ describe Review, type: :model do
     it { should validate_presence_of :title}
     it { should validate_presence_of :rating}
     it { should validate_presence_of :content}
-    it { should validate_inclusion_of(:rating).in_range(1..10).with_message("You've entered an invalid rating, please choose a number between 1 & 10")}
+    it { should validate_inclusion_of(:rating).in_range(1..10).with_message("you've entered an invalid rating, please choose a number between 1 & 10")}
 end
   describe "relationships" do
     it { should belong_to :shelter }
