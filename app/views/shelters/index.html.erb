@@ -7,22 +7,42 @@
 </div>
 <div class="container">
   <div class="row">
-    <% @shelters.each do |shelter| %>
+    <div class="col-12 center">
+      <h4>Top 3 Highest Rated Shelters</h4>
+    </div>
+    <div class="row">
+      <section id="shelter-stats">
+        <% @shelters.three_highest_rated.each_with_index do |shelter, index| %>
+        <div class="col-4 center">
+          <p><%= "#{index + 1}. " %><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></p>
+        </div>
+        <% end %>
+      </section>
+    </div>
+    <br><br><br><br>
+    <div class="row">
+      <div class="col-12 center">
+        <h4>All Shelters</h4>
+      </div>
+    </div>
+    <div class="row">
+      <% @shelters.each do |shelter| %>
       <div class="col-4 center">
         <section id="shelter-<%= shelter.id %>">
-          <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"  %><br>
+          <h6><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}"  %></h6><br>
           <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
-            <% if !shelter.pets.pets_with_approved_apps.empty? && !shelter.pets.pets_with_pending_status.empty? %>
-            <% else %>
-              <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
-            <% end %>
+          <% if !shelter.pets.pets_with_approved_apps.empty? && !shelter.pets.pets_with_pending_status.empty? %>
+            <br><br>
+          <% else %>
+          <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br><br>
+          <% end %>
         </section>
       </div>
-    <% end %>
-  </div>
-  <div class="row">
-    <div class="col-12 center">
-      <%= link_to "New Shelter", "/shelters/new"%>
+      <% end %>
     </div>
-  </div> 
-</div>
+    <div class="row">
+      <div class="col-12 center">
+        <%= link_to "New Shelter", "/shelters/new"%>
+      </div>
+    </div>
+  </div>
