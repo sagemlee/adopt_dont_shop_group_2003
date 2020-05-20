@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to "/shelters/#{shelter.id}"
     else
-      flash[:alert] = "#{review.errors.full_messages.first}, please fill out and resubmit"
+      flash[:alert] = "#{@review.errors.full_messages.first}, please fill out and resubmit"
       render :edit
     end
   end

@@ -11,7 +11,7 @@ describe "user edits review" do
       visit "/shelters/#{shelter.id}"
 
       within(".review-#{review1.id}")do
-        click_link "Edit this Review"
+        click_link "Edit Review"
       end
 
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/#{review1.id}/edit")
@@ -42,7 +42,7 @@ describe "user edits review" do
       visit "/shelters/#{shelter.id}"
 
       within(".review-#{review1.id}")do
-        click_link "Edit this Review"
+        click_link "Edit Review"
       end
 
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/#{review1.id}/edit")
