@@ -42,6 +42,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'active_designer'
   gem "factory_bot_rails"
+  gem 'orderly'
 end
 
 group :development do
