@@ -40,6 +40,8 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:title, :img_url, :rating, :content)
+    params
+    .permit(:title, :rating, :content, :img_url)
+    .reverse_merge(img_url: 'http://www.amandaspetcare.com/services/pet-sitting/dog-cat-grass.jpg')
   end
 end
