@@ -52,9 +52,14 @@
       <h3> Reviews </h3>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 center">
+      <p>Sort By: <%= link_to('highest rating', :order => 'highest') %> | <%= link_to('lowest rating', :order => 'lowest') %></p>
+    </div>
+  </div>
 
   <div class="row">
-    <% @shelter.reviews.each do |review| %>
+    <% @shelter_reviews.each do |review| %>
     <div class="col-4 center">
       <section class="review-<%=review.id %>">
         <p><%= review.title %></p>
@@ -85,9 +90,9 @@
     <div class="col-4 center">
       <section class="shelter-average">
         <% if @shelter.reviews.empty? %>
-          <p>Average Review Rating: 0 </p>
+        <p>Average Review Rating: 0 </p>
         <% else %>
-          <p>Average Review Rating: <%= @shelter.reviews.average_rating.round(2) %></p>
+        <p>Average Review Rating: <%= @shelter.reviews.average_rating.round(2) %></p>
         <% end %>
       </section>
     </div>

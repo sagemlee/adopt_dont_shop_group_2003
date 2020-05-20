@@ -6,6 +6,14 @@ class SheltersController < ApplicationController
 
   def show
     @shelter = Shelter.find(params[:shelter_id])
+
+    if (params[:order] == 'highest')
+      @shelter_reviews = @shelter.reviews.highest_rating_desc_date
+    elsif (params[:order] == 'lowest')
+      @shelter_reviews = @shelter.reviews.lowest_rating_asc_date
+    else 
+      @shelter_reviews = @shelter.reviews
+    end 
   end
 
   def new
