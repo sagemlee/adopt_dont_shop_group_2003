@@ -29,7 +29,7 @@
         <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3><br>
         <% if pet.adoption_status == "adoptable" %>
           <%= link_to "Approve Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch%>
-        <% else %>
+        <% elsif pet.adoption_status == "pending" && pet.pet_applications.approved_application.application.name == @application.name  %>
           <%= link_to "Unapprove Application for Pet", "/pets/#{pet.id}/applications/#{@application.id}", method: :delete%>
         <% end %>
       </section>
