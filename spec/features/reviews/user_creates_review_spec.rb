@@ -36,12 +36,13 @@ describe "user creates review" do
       click_link "New Review"
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/new")
 
-      fill_in :content, with: "Something something something something"
+      fill_in :rating, with: "3"
       fill_in :img_url, with: "www.img.com/2"
 
       click_button "Submit"
 
-      expect(page).to have_content("Please fill out the title, rating and content to submit a review")
+      expect(page).to have_content("Title can't be blank")
+      expect(page).to have_content("Content can't be blank")
       expect(current_path).to eq("/shelters/#{shelter.id}")
 
       fill_in :title, with: "Pets Pets Pets"

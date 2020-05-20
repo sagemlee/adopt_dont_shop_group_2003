@@ -46,7 +46,7 @@ describe "user edits review" do
       end
 
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/#{review1.id}/edit")
-      
+
       expect(page).to have_field(:title, :with => review1.title)
       expect(page).to have_field(:rating, :with => review1.rating)
       expect(page).to have_field(:content, :with => review1.content)
@@ -59,7 +59,7 @@ describe "user edits review" do
 
       click_button "Submit Updates"
 
-      expect(page).to have_content("Please fill out the title, rating and content to submit a review")
+      expect(page).to have_content("Content can't be blank")
       expect(current_path).to eq("/shelters/#{shelter.id}/reviews/#{review1.id}")
 
       fill_in :title, with: "Great Shelter"
