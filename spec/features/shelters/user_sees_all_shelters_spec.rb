@@ -39,6 +39,8 @@ describe "user sees all shelters" do
         expect(page).to have_link("#{shelter1.name}", :href=>"/shelters/#{shelter1.id}")
         expect(page).to have_link("#{shelter2.name}", :href=>"/shelters/#{shelter2.id}")
         expect(page).to have_link("#{shelter3.name}", :href=>"/shelters/#{shelter3.id}")
+        expect(page).to_not have_link("#{shelter4.name}", :href=>"/shelters/#{shelter4.id}")
+        expect(page).to_not have_link("#{shelter5.name}", :href=>"/shelters/#{shelter5.id}")
       end
     end
   end
