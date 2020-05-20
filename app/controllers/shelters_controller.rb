@@ -17,7 +17,6 @@ class SheltersController < ApplicationController
   end
 
   def new 
-    dfd
   end
 
   def create
