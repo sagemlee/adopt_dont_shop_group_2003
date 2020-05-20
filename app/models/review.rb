@@ -8,4 +8,12 @@ class Review < ApplicationRecord
   def self.average_rating
     Review.average(:rating)
   end
+
+  def self.highest_rating_desc_date
+    Review.order(rating: :desc, created_at: :desc)
+  end 
+
+  def self.lowest_rating_asc_date
+    Review.order(rating: :asc, created_at: :asc)
+  end 
 end
