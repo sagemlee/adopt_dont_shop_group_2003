@@ -12,20 +12,21 @@ describe "user updates a shelter" do
 
         expect(current_path).to eq("/shelters/#{shelter.id}/edit")
 
-        fill_in "shelter[name]", with: "Update name"
-        fill_in "shelter[address]", with: "Update address"
-        fill_in "shelter[city]", with: "Update city"
-        fill_in "shelter[state]", with: "Update state"
-        fill_in "shelter[zip]", with: "Update zip"
-        click_on "Submit"
+        fill_in :name, with: "test1"
+        fill_in :address, with: "test1"
+        fill_in :city, with: "test1"
+        fill_in :state, with: "test1"
+        fill_in :zip, with: "test1"
+
+        click_button "Submit"
 
         expect(current_path).to eq("/shelters/#{shelter.id}")
 
-        expect(page).to have_content("Update name")
-        expect(page).to have_content("Update address")
-        expect(page).to have_content("Update city")
-        expect(page).to have_content("Update state")
-        expect(page).to have_content("Update zip")
+        expect(page).to have_content("test1")
+        expect(page).to have_content("test1")
+        expect(page).to have_content("test1")
+        expect(page).to have_content("test1")
+        expect(page).to have_content("test1")
       end
         it "displays flash message if missing content" do
 
