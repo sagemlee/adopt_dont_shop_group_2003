@@ -75,7 +75,7 @@ describe "user creates review" do
 
       expect(page).to have_content("Pets Pets Pets")
       expect(page).to have_content("Something something something something")
-      expect(page).to have_xpath("//img[@src = 'http://www.amandaspetcare.com/services/pet-sitting/dog-cat-grass.jpg']")
+      expect(page).to have_xpath("//img[@src = 'https://adoptdontshop.s3-us-west-1.amazonaws.com/dog-cat-grass.jpg']")
     end
   end
 end
