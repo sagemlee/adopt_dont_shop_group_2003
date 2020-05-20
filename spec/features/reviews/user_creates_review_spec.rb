@@ -28,9 +28,6 @@ describe "user creates review" do
     it "displays flash message if missing content" do
       shelter = create(:shelter)
 
-      review1 = create(:review, shelter_id: "#{shelter.id}")
-      review2 = create(:review, shelter_id: "#{shelter.id}")
-
       visit "/shelters/#{shelter.id}"
 
       click_link "New Review"
@@ -41,8 +38,7 @@ describe "user creates review" do
 
       click_button "Submit"
 
-      expect(page).to have_content("Title can't be blank")
-      expect(page).to have_content("Content can't be blank")
+      expect(page).to have_content("Title can't be blank, please fill out and resubmit")
       expect(current_path).to eq("/shelters/#{shelter.id}")
 
       fill_in :title, with: "Pets Pets Pets"

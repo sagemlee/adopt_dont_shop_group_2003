@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review saved"
       redirect_to "/shelters/#{@current_shelter.id}"
     else
-      flash[:alert] =  review.errors.full_messages
+      flash[:alert] =  "#{review.errors.full_messages.first}, please fill out and resubmit"
       render :new
     end
   end
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to "/shelters/#{shelter.id}"
     else
-      flash[:alert] = @review.errors.full_messages
+      flash[:alert] = "#{@review.errors.full_messages.first}, please fill out and resubmit"
       render :edit
     end
   end
