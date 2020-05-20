@@ -1,6 +1,10 @@
 # Adopt Don't Shop
 BE Mod 2 Week 1 Solo Project by Sage Lee and Derek Borski
 
+Link to Website: https://adoptdontshop-group2003.herokuapp.com/
+
+Our website implements all of the following user stories:
+
 
 ## User Stories
 
