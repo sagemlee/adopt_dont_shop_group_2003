@@ -56,5 +56,26 @@ describe "user creates review" do
       expect(page).to have_content("Pets Pets Pets")
       expect(page).to have_content("Something something something something")
     end
+
+    it "displays default photo if missing url on form" do
+      shelter = create(:shelter)
+
+      visit "/shelters/#{shelter.id}"
+
+      click_link "New Review"
+      expect(current_path).to eq("/shelters/#{shelter.id}/reviews/new")
+
+      fill_in :title, with: "Pets Pets Pets"
+      fill_in :rating, with: 1
+      fill_in :content, with: "Something something something something"
+
+      click_button "Submit"
+
+      expect(current_path).to eq("/shelters/#{shelter.id}")
+
+      expect(page).to have_content("Pets Pets Pets")
+      expect(page).to have_content("Something something something something")
+      expect(page).to have_xpath("//img[@src = 'http://www.amandaspetcare.com/services/pet-sitting/dog-cat-grass.jpg']")
+    end
   end
 end
