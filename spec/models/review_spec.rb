@@ -33,7 +33,7 @@ end
 
     reviews = Review.all
 
-    expect(reviews.highest_desc).to eq([review4, review3, review2, review1])
+    expect(reviews.highest_rating_desc_date).to eq([review1, review2, review3, review4])
     end
     it "lowest_asc" do
 
@@ -46,7 +46,7 @@ end
 
     reviews = Review.all
 
-    expect(reviews.lowest_asc).to eq([review1, review2, review3, review4])
+    expect(reviews.lowest_rating_asc_date).to eq([review4, review3, review2, review1])
     end
   end
 end
