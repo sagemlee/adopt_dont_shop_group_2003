@@ -18,4 +18,45 @@ RSpec.describe "User registration form" do
 
     expect(page).to have_content("Welcome, #{username}!")
   end
+    it "keeps a user logged in after registering" do
+    visit "/"
+
+    click_on "Register as a User"
+
+    username = "funbucket13"
+    password = "test"
+
+    fill_in :username, with: username
+    fill_in :password, with: password
+
+    click_on "Create User"
+
+    visit '/profile'
+
+    expect(page).to have_content("Hello, #{username}!")
+  end
+end
+
+RSpec.describe "Logging In" do
+  it "can long in with the valid credentials" do
+    
+    user = User.create(username: "funbucket13", password: "test")
+
+    visit '/'
+
+    click_on "I already have an account"
+
+    expect(current_path).to eq('/login')
+
+    fill_in :username, with: user.username
+    fill_in :password, with: user.password
+
+    click_on "Log In"
+
+    expect(current_path).to eq('/')
+    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_link("Log out")
+    expect(page).to_not have_link("Register as a User")
+    expect(page).to_not have_link("I already have an account")
+  end
 end

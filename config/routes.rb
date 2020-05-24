@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get '/users/show', to: 'users#show'
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
+  get '/profile', to: 'users#show'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'

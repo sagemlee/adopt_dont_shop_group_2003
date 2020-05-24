@@ -1,0 +1,16 @@
+class SessionsController < ApplicationController
+
+  def new
+  end
+
+  def create
+    binding.pry
+    user = User.find_by(username: params[:username])
+
+    session[:user_id] = user.id
+    flash[:success] = "Welcome, #{user.username}!"
+
+    redirect_to '/'
+  end
+  
+end
