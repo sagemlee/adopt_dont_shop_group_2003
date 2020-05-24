@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :favorite
+  helper_method :favorite, :current_user
 
   def favorite
     @favorite ||= Favorite.new(session[:favorite])
-  end 
+  end
+  
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 end
