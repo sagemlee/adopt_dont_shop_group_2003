@@ -43,6 +43,7 @@ group :development, :test do
   gem 'active_designer'
   gem "factory_bot_rails"
   gem 'orderly'
+  gem 'bcrypt'
 end
 
 group :development do
