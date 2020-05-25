@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/profile', to: 'users#show'
 
+  namespace :admin do
+    get '/dashboard', to: "dashboard#index"
+  end
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
