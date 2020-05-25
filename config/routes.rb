@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
-  get '/users/show', to: 'users#show'
+  get '/users/:id', to: 'users#show'
   get '/users/new', to: 'users#new'
   post '/users', to: 'users#create'
   get '/profile', to: 'users#show'
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
+    get '/pets/new', to: 'pets#new'
+    get '/pets/:pet_id/edit', to: 'pets#edit'
+    patch '/pets/:pet_id', to: 'pets#update'
+    delete '/pets/:pet_id', to: 'pets#destroy'
   end
 
   get '/login', to: 'sessions#new'
@@ -23,11 +27,7 @@ Rails.application.routes.draw do
   post '/shelters', to: 'shelters#create'
 
   get '/pets', to: 'pets#index'
-  get '/pets/new', to: 'pets#new'
   get '/pets/:pet_id', to: 'pets#show'
-  get '/pets/:pet_id/edit', to: 'pets#edit'
-  patch '/pets/:pet_id', to: 'pets#update'
-  delete '/pets/:pet_id', to: 'pets#destroy'
 
   get '/shelters/:shelter_id/pets', to: 'shelter_pets#index'
   get '/shelters/:shelter_id/pets/new', to: 'pets#new'
