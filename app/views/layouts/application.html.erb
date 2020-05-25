@@ -15,6 +15,10 @@
         <a href="/pets/">Pets</a>
         <a href="/shelters/">Shelters</a>
         <a href="/favorites/"><%= "Favorite Pets: #{favorite.total_count}" %></a>
+        <% if current_user %>
+          <a href="/profile"><%= "Currently logged in as: #{current_user.username}" %></a>
+        <% else %>
+        <% end %>
       </div>
     </nav> 
    

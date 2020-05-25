@@ -38,7 +38,7 @@ RSpec.describe "User registration form" do
 end
 
 RSpec.describe "Logging In" do
-  it "can long in with the valid credentials" do
+  it "can log in with the valid credentials" do
     
     user = User.create(username: "funbucket13", password: "test")
 
@@ -55,12 +55,10 @@ RSpec.describe "Logging In" do
 
     expect(current_path).to eq('/')
     expect(page).to have_content("Welcome, #{user.username}")
-    expect(page).to have_link("Log out")
-    expect(page).to_not have_link("Register as a User")
-    expect(page).to_not have_link("I already have an account")
+    expect(page).to have_link("Log Out")
   end
   it "cannot log in with bad credentials" do
-    
+
     user = User.create(username: "funbucket13", password: "test")
 
     visit "/"
@@ -75,5 +73,33 @@ RSpec.describe "Logging In" do
     expect(current_path).to eq('/login')
 
     expect(page).to have_content("Sorry, your credentials are bad.")
+  end
 end
-end
+
+RSpec.describe "Logging Out" do
+  it "can log out after being logged in" do
+    
+    user = User.create(username: "funbucket13", password: "test")
+
+    visit '/'
+
+    click_on "I already have an account"
+
+    expect(current_path).to eq('/login')
+
+    fill_in :username, with: user.username
+    fill_in :password, with: user.password
+
+    click_on "Log In"
+
+    expect(current_path).to eq('/')
+    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_content("Currently logged in as: #{user.username}")
+    expect(page).to have_link("Log Out")
+
+    click_on "Log Out"
+
+    expect(current_path).to eq('/')
+    expect(page).to have_content("You have been logged out")
+  end
+end 
