@@ -101,5 +101,7 @@ RSpec.describe "Logging Out" do
 
     expect(current_path).to eq('/')
     expect(page).to have_content("You have been logged out")
+    expect(page).to_not have_content("Currently logged in as: #{user.username}")
+    expect(page).to_not have_link("Log Out")
   end
 end 

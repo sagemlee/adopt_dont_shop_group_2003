@@ -1,8 +1,8 @@
 <h2>Welcome to the site. Enter <%= link_to "here", "/shelters/"%></h2>
 
 <% if current_user %>
-  <%= link_to "Log Out" %>
+  <%= link_to "Log Out", '/logout' %>
 <% else %>
-  <%= link_to "Register as a User", "users/new" %><br>
+  <%= link_to "Register as a User", "/users/new" %><br>
   <%= link_to "I already have an account", "/login" %>
 <% end %>
